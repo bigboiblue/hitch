@@ -1,0 +1,15 @@
+version: "3"
+services:
+  hitch:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    entrypoint: /app/docker/container_startup.sh
+    volumes:
+      - ../:/app
+      - /app/docker
+      - ./container_startup.sh:/app/docker/container_startup.sh
+    ports:
+      - "8080:8080"
+    stdin_open: true
+    tty: true
