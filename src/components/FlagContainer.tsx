@@ -1,7 +1,9 @@
+import "./scss/FlagContainer.scss";
+
 import React, { Component } from "react";
 
 interface Props {
-    filter: "type";
+    title: string;
     flags: Record<string, any>;
 }
 interface State {
@@ -12,13 +14,15 @@ export default class FlagContainer extends Component<Props, State> {
     state = {}
 
     render() {
-        let { filter, flags } = this.props;
-        let flagTitles = flags.map((value, index) => <li>{value.name}</li>);
+        let { title, flags } = this.props;
+        let flagTitles = flags.map((value) => <li key={value.name}>{value.name}</li>);
 
         return (
-            <div>
-                <h1>Filter: {filter}</h1>
-                {flagTitles}
+            <div className="flagContainer">
+                <h1>{title}</h1>
+                <ul>
+                    {flagTitles}
+                </ul>
             </div>
         );
     }

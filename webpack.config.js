@@ -19,7 +19,16 @@ module.exports = {
             {
                 test: /\.scss$/,
                 include: path.resolve(__dirname, "src"),
-                loader: ["style-loader", "css-loader", "sass-loader"],
+                use: [
+                    {
+                        loader: "style-loader",
+                        options: {
+                            injectType: "singletonStyleTag",
+                        },
+                    },
+                    "css-loader",
+                    "sass-loader",
+                ],
             },
         ],
     },

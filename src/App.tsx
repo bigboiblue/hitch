@@ -1,3 +1,5 @@
+import "./scss/index_main.scss";
+
 import React from "react";
 import ReactDom from "react-dom";
 import { createStore, compose, applyMiddleware } from "redux";
@@ -6,8 +8,6 @@ import thunk from "redux-thunk";
 import allReducer from "./reducers/index";
 import MainContainer from "./components/MainContainer";
 import "@babel/polyfill";
-
-import "./scss/index_main.scss";
 
 
 class App extends React.Component {

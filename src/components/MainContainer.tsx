@@ -1,8 +1,9 @@
-import React, { Component } from "react";
-import FlagContainer from "./FlagContainer";
 import "./scss/MainContainer.scss";
 
+import React, { Component } from "react";
+import FlagContainer from "./FlagContainer";
 
+// TODO: Transfer mongoose code to a separate node.js server
 // import mongoose from "mongoose";
 
 // mongoose.connect("mongodb://localhost:27017/hitch", { useNewUrlParser: true });
@@ -32,11 +33,13 @@ export default class MainContainer extends Component<Props, State> {
 
     constructor(props: Props) {
         super(props);
+        // TODO: Create default filter type
         this.filter = "type";
         this.fillFlagContainers(this.filter);
     }
 
-    fillFlagContainers(filter: "type") {
+    fillFlagContainers(filter: "type"): void {
+        // TODO: Remove temporary flags array below
         const flags = [{
             _id: "5d8e0ab72c661b041ac23ef4",
             name: "Great Feature",
@@ -70,19 +73,25 @@ export default class MainContainer extends Component<Props, State> {
         if (filter === "type") {
             uniqueFilterValues = [...new Set(flags.map((value) => value.type))];
         }
+
         for (let i = 0; i < uniqueFilterValues.length; ++i) {
             const filteredFlags = flags.filter((value) => value.type === uniqueFilterValues[i]);
-            this.flagContainers.push(<FlagContainer key={i} filter={filter} flags={filteredFlags} />);
+            const title = `${filter}: ${uniqueFilterValues[i]}`;
+            this.flagContainers.push(
+                <FlagContainer key={i} title={title} flags={filteredFlags} />,
+            );
         }
     }
 
-    render() {
+    render(): React.ReactElement {
         let { title } = this.props;
 
         return (
             <div id="mainContainer">
-                <h1>{ title }</h1>
-                {this.flagContainers}
+                <h1>App - { title }</h1>
+                <div id="mainFlagContainer">
+                    {this.flagContainers}
+                </div>
             </div>
         );
     }
