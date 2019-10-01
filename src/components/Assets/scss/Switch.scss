@@ -1,0 +1,52 @@
+@import "../../../scss/mixins.scss";
+
+// TODO: Cleanup animation code
+
+
+.switch {
+    @include centerElement;
+    display: inline-block;
+    position: absolute;
+    justify-self: flex-start;
+    align-self: flex-start;
+    width: 3rem;
+    height: 1.5rem;
+    border-radius: 1rem;
+}
+
+.switchCircle {
+    @include centerElementVertically;
+    position: absolute;
+    height: 1.2rem;
+    width: 1.2rem;
+    border-radius: 80%;
+    background-color: rgb(238, 238, 238);
+    display: inline-block;
+    box-shadow: 0px 0px 1px 2px rgba(0, 0, 0, 0.082);
+}
+
+.switchBefore {
+    @extend .switch;
+    background-color: grey;
+    transition: all .3s ease-out;
+
+    .switchCircleBefore {
+        @extend .switchCircle;
+        left: 5.5%;
+        transition: all .3s ease;
+    }
+}
+
+
+.switchAfter {
+    @extend .switch;
+    transition: all .3s ease-out;
+    background-color: #54b1ee;
+
+    .switchCircleAfter {
+        @extend .switchCircle;
+        left: 94.5%;
+        transform: translate(-100%, -50%);
+        transition: all .3s ease;
+    }
+}

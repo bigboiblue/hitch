@@ -1,7 +1,7 @@
 import "./scss/MainContainer.scss";
 
 import React, { Component } from "react";
-import FlagContainer from "./FlagContainer";
+import FlagBox from "./FlagBox";
 
 // TODO: Transfer mongoose code to a separate node.js server
 // import mongoose from "mongoose";
@@ -28,17 +28,17 @@ interface State {
 export default class MainContainer extends Component<Props, State> {
     state = {}
 
-    private flagContainers: React.ReactElement[] = [];
+    private FlagBoxes: React.ReactElement[] = [];
     private filter: "type";
 
     constructor(props: Props) {
         super(props);
         // TODO: Create default filter type
         this.filter = "type";
-        this.fillFlagContainers(this.filter);
+        this.fillFlagBoxes(this.filter);
     }
 
-    fillFlagContainers(filter: "type"): void {
+    fillFlagBoxes(filter: "type"): void {
         // TODO: Remove temporary flags array below
         const flags = [{
             _id: "5d8e0ab72c661b041ac23ef4",
@@ -77,8 +77,8 @@ export default class MainContainer extends Component<Props, State> {
         for (let i = 0; i < uniqueFilterValues.length; ++i) {
             const filteredFlags = flags.filter((value) => value.type === uniqueFilterValues[i]);
             const title = `${filter}: ${uniqueFilterValues[i]}`;
-            this.flagContainers.push(
-                <FlagContainer key={i} title={title} flags={filteredFlags} />,
+            this.FlagBoxes.push(
+                <FlagBox key={i} title={title} flags={filteredFlags} />,
             );
         }
     }
@@ -89,8 +89,8 @@ export default class MainContainer extends Component<Props, State> {
         return (
             <div id="mainContainer">
                 <h1>App - { title }</h1>
-                <div id="mainFlagContainer">
-                    {this.flagContainers}
+                <div id="flagBoxContainer">
+                    {this.FlagBoxes}
                 </div>
             </div>
         );

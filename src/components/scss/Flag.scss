@@ -1,0 +1,17 @@
+.flagContainer  {
+    
+    display: flex;
+    position: relative;
+
+    li {
+        padding: 20px;
+        flex: 12;
+    }
+
+
+    .switchWrapper{
+        flex: 1;
+        position: relative;
+    }
+
+}

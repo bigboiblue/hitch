@@ -1,6 +1,7 @@
-import "./scss/FlagContainer.scss";
+import "./scss/FlagBox.scss";
 
 import React, { Component } from "react";
+import Flag from "./Flag";
 
 interface Props {
     title: string;
@@ -10,15 +11,17 @@ interface State {
 
 }
 
-export default class FlagContainer extends Component<Props, State> {
+export default class FlagBox extends Component<Props, State> {
     state = {}
 
     render() {
         let { title, flags } = this.props;
-        let flagTitles = flags.map((value) => <li key={value.name}>{value.name}</li>);
+        let flagTitles = flags.map((value) => (
+            <Flag key={value.name} name={value.name} />
+        ));
 
         return (
-            <div className="flagContainer">
+            <div className="flagBox">
                 <h1>{title}</h1>
                 <ul>
                     {flagTitles}
