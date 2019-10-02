@@ -1,6 +1,6 @@
-import "./scss/FlagBox.scss";
-
 import React, { Component } from "react";
+import styles from "./scss/FlagBox.scss";
+
 import Flag from "./Flag";
 
 interface Props {
@@ -21,7 +21,7 @@ export default class FlagBox extends Component<Props, State> {
         ));
 
         return (
-            <div className="flagBox">
+            <div className={styles.flagBox}>
                 <h1>{title}</h1>
                 <ul>
                     {flagTitles}

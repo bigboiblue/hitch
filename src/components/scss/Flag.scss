@@ -1,7 +1,10 @@
+@import "../../scss/mixins.scss";
+
 .flagContainer  {
     
     display: flex;
     position: relative;
+    justify-content: center;
 
     li {
         padding: 20px;
@@ -9,9 +12,18 @@
     }
 
 
-    .switchWrapper{
+    .switchWrapper  {
         flex: 1;
         position: relative;
     }
 
+    .kebabMenuWrapper   {
+        flex: 1;
+        position: relative;
+    }
+
+}
+
+.centerElement  {
+    @include centerElement;
 }

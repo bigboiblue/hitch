@@ -1,9 +1,9 @@
-#mainContainer  {
+.mainContainer  {
     position: absolute;
     width: 100%;
     height: 100%;
 
-    #flagBoxContainer {
+    .flagBoxContainer {
         display: flex;
         flex-direction: column;
         margin: 0 auto 0 auto;

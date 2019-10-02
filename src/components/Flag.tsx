@@ -1,8 +1,8 @@
-import "./scss/Flag.scss";
-
 import React, { Component } from "react";
-import { black } from "ansi-colors";
-import Switch from "./Assets/Switch";
+import styles from "./scss/Flag.scss";
+
+import Switch from "../utility_components/Switch";
+import KebabMenu from "../utility_components/KebabMenu";
 
 interface Props {
     name: string;
@@ -16,13 +16,15 @@ export default class Flag extends Component<Props, State> {
 
     render() {
         let { name } = this.props;
-
         return (
-            <div className="flagContainer">
-                <div className="switchWrapper">
-                    <Switch color="#00BB00" />
+            <div className={styles.flagContainer}>
+                <div className={styles.switchWrapper}>
+                    <Switch className={styles.centerElement} />
                 </div>
                 <li key={name}>{name}</li>
+                <div className={styles.kebabMenuWrapper}>
+                    <KebabMenu className={styles.centerElement} />
+                </div>
             </div>
         );
     }

@@ -1,6 +1,5 @@
-import "./scss/MainContainer.scss";
-
 import React, { Component } from "react";
+import styles from "./scss/MainContainer.scss";
 import FlagBox from "./FlagBox";
 
 // TODO: Transfer mongoose code to a separate node.js server
@@ -87,9 +86,9 @@ export default class MainContainer extends Component<Props, State> {
         let { title } = this.props;
 
         return (
-            <div id="mainContainer">
+            <div className={styles.mainContainer}>
                 <h1>App - { title }</h1>
-                <div id="flagBoxContainer">
+                <div className={styles.flagBoxContainer}>
                     {this.FlagBoxes}
                 </div>
             </div>

@@ -23,10 +23,20 @@ module.exports = {
                     {
                         loader: "style-loader",
                         options: {
-                            injectType: "singletonStyleTag",
+                            // injectType: "singletonStyleTag",
                         },
                     },
-                    "css-loader",
+                    {
+                        loader: "css-loader",
+                        options: {
+                            importLoaders: 1,
+                            modules: {
+                                mode: "local",
+                                localIdentName: "[path][name]__[local]--[hash:base64:5]",
+                                hashPrefix: "hitch",
+                            },
+                        },
+                    },
                     "sass-loader",
                 ],
             },
