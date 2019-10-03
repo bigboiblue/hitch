@@ -3,7 +3,7 @@ import styles from "./scss/Switch.scss";
 
 
 interface Props {
-    className: string;
+    className?: string;
 }
 interface State {
     isEnabled: boolean;
