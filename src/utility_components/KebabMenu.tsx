@@ -3,6 +3,7 @@ import React, { Component, ReactElement } from "react";
 import ReactDOM from "react-dom";
 import uuid from "uuid/v4";
 import posed from "react-pose";
+import MenuItem from "./MenuItem";
 import DropDownMenu from "./DropDownMenu";
 import styles from "./scss/KebabMenu.scss";
 
@@ -15,8 +16,11 @@ interface State {
 }
 
 export default class KebabMenu extends Component<Props, State> {
-    private middleDotRef;
-    private menuWidthRef;
+    private middleDotRef: React.RefObject<HTMLDivElement>;
+    private menuWidthRef: React.RefObject<HTMLDivElement>;
+    private menuItems: MenuItem[];
+    private MENU_CONTAINER_NAME: string;
+    private instanceUUID: string;
 
     constructor(props: Props) {
         super(props);
@@ -25,45 +29,86 @@ export default class KebabMenu extends Component<Props, State> {
             menuEnabled: false,
         };
 
-        this.middleDotRef = React.createRef();
-        this.showMenu = this.showMenu.bind(this);
-    }
+        this.instanceUUID = uuid();
 
-    public showMenu(): void {
-        this.setState({
-            menuEnabled: true,
-        });
-
-        let middleDotRef = this.middleDotRef.current as HTMLElement;
-        let menuPositionFromUpperRight = {
-            x: middleDotRef.getBoundingClientRect().left,
-            y: middleDotRef.getBoundingClientRect().top,
-        };
-
-        const MENU_PLACEHOLDER_CLASS_NAME = "dropDownMenuPlaceholder";
-        if (document.getElementsByClassName(MENU_PLACEHOLDER_CLASS_NAME).length === 0) {
-            let menuPlaceholder = document.createElement("div");
-            menuPlaceholder.className = MENU_PLACEHOLDER_CLASS_NAME;
-            document.body.appendChild(menuPlaceholder);
+        // TODO: This menuItems initialisation is temporary, and for testing purposes.
+        // Find a better way to store menuItems
+        this.menuItems = [];
+        for (let i = 0; i < 5; ++i) {
+            this.menuItems.push(<MenuItem title={`Some Title ${i}`} key={`Some Title ${i}`} />);
         }
 
-        ReactDOM.render(
-            <DropDownMenu position={menuPositionFromUpperRight} className={styles.correctMenuPosition} />,
-            document.getElementsByClassName(MENU_PLACEHOLDER_CLASS_NAME)[0],
-        );
+        this.MENU_CONTAINER_NAME = `kebabDropDownMenuContainer-${this.instanceUUID}`;
+        let menuPlaceholder = document.createElement("div");
+        menuPlaceholder.className = this.MENU_CONTAINER_NAME;
+        document.body.appendChild(menuPlaceholder);
+
+        this.middleDotRef = React.createRef();
+        this.calcMenuPosition = this.calcMenuPosition.bind(this);
+        this.toggleMenuState = this.toggleMenuState.bind(this);
+        this.updateMenuProps = this.updateMenuProps.bind(this);
+    }
+
+
+    componentDidMount() {
+        this.updateMenuProps();
+    }
+
+    componentDidUpdate() {
+        this.updateMenuProps();
+    }
+    public calcMenuPosition(): {top: number; left: number} {
+        let middleDotRef = this.middleDotRef.current as HTMLElement;
+        let menuPositionFromUpperRight = {
+            left: middleDotRef.getBoundingClientRect().left,
+            top: middleDotRef.getBoundingClientRect().top,
+        };
+
+        return menuPositionFromUpperRight;
+    }
+
+    public toggleMenuState() {
+        const newMenuEnabled = !this.state.menuEnabled;
+        this.setState({ menuEnabled: newMenuEnabled });
+    }
+
+
+    private updateMenuProps() {
+        setTimeout(() => {
+            let { menuEnabled } = this.state;
+
+            ReactDOM.render(
+                <DropDownMenu
+                    position={this.calcMenuPosition()}
+                    className={styles.correctMenuPosition}
+                    menuItems={this.menuItems}
+                    isVisible={menuEnabled}
+                />,
+                document.getElementsByClassName(this.MENU_CONTAINER_NAME)[0],
+            );
+        });
     }
 
     render() {
         let { className } = this.props;
         let { menuEnabled } = this.state;
 
-        let menu = <></>;
-        if (menuEnabled) {
-            // TODO: Create animation with dots
-        }
+
+        //TODO: BIG... Convert all component code to use react hooks
+        // React.useEffect(() => {
+        //     ReactDOM.render(
+        //         <DropDownMenu
+        //             position={this.calcMenuPosition()}
+        //             className={styles.correctMenuPosition}
+        //             menuItems={this.menuItems}
+        //             isEnabled={menuEnabled}
+        //         />,
+        //         document.getElementsByClassName(this.MENU_CONTAINER_NAME)[0],
+        //     );
+        // });
 
         return (
-            <div className={`${styles.kebabMenuWrapper} ${className}`} onClick={this.showMenu}>
+            <div className={`${styles.kebabMenuWrapper} ${className}`} onClick={this.toggleMenuState}>
                 <div className={styles.kebabMenu}>
                     <div className={styles.upperDotWrapper}>
                         <div className={styles.dot} />
