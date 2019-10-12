@@ -58,6 +58,12 @@
         "@typescript-eslint/no-inferrable-types": "warn",
         "@typescript-eslint/no-var-requires": "off",
         "@typescript-eslint/ban-ts-ignore": "off",
+        "@typescript-eslint/explicit-function-return-type": [
+            "warn",
+            {
+                "allowExpressions": true
+            }
+        ],
         "react/jsx-filename-extension": "off",
         "react/jsx-indent": ["warn", 4],
         "react/destructuring-assignment": "off",

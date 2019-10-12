@@ -1,10 +1,9 @@
 import React, { Component, ReactElement } from "react";
 import ReactDOM from "react-dom";
 import posed from "react-pose";
-import { sequenceExpression, is } from "@babel/types";
 import uuid from "uuid/v4";
 import MenuItem from "./MenuItem";
-import styles from "./scss/DropDownMenu.scss";
+import styles from "../scss/DropDownMenu.scss";
 
 interface Props {
     position: {left: number; top: number};

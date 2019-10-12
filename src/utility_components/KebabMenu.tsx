@@ -3,8 +3,8 @@ import React, { Component, ReactElement } from "react";
 import ReactDOM from "react-dom";
 import uuid from "uuid/v4";
 import posed from "react-pose";
-import MenuItem from "./MenuItem";
-import DropDownMenu from "./DropDownMenu";
+import MenuItem from "./DropDownMenu/MenuItem";
+import DropDownMenu from "./DropDownMenu/DropDownMenu";
 import styles from "./scss/KebabMenu.scss";
 
 

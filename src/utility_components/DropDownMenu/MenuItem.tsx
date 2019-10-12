@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import styles from "./scss/MenuItem.scss";
+import styles from "../scss/MenuItem.scss";
 
 interface Props {
     title: string;

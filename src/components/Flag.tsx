@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import styles from "./scss/Flag.scss";
 
 import Switch from "../utility_components/Switch";
-import KebabMenu from "../utility_components/KebabMenu";
+import KebabMenu from "../utility_components/NewKebabMenu";
 
 interface Props {
     name: string;
@@ -19,11 +19,11 @@ export default class Flag extends Component<Props, State> {
         return (
             <div className={styles.flagContainer}>
                 <div className={styles.switchWrapper}>
-                    <Switch className={styles.centerElement} />
+                    <Switch />
                 </div>
                 <li key={name}>{name}</li>
                 <div className={styles.kebabMenuWrapper}>
-                    <KebabMenu className={styles.centerElement} />
+                    <KebabMenu />
                 </div>
             </div>
         );
