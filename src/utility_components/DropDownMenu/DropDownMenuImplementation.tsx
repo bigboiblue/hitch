@@ -83,6 +83,7 @@ export default class DropDownMenu extends Component<Props, State> {
                         width: "100vw",
                         zIndex: 999,
                         position: "fixed",
+                        backgroundColor: "black",
                     }
                 }
             />, document.getElementsByClassName(this.CLICK_OVERLAY_NAME)[0]);

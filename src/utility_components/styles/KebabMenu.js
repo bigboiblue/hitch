@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import posed from "react-pose";
-import { parseCssCalc } from "../../styles/utilityFunctions";
+import { parseCssCalc } from "../../utilityFunctions";
 import { centerElement } from "../../styles/mixins";
 
 
@@ -36,7 +36,7 @@ export const AnimatedDot = posed(Dot)({
         transform: "scale(1, 1)",
     },
     menuEnabled: {
-        transform: "scale(1.3, 1.3)",
+        transform: "scale(5.5, 5.5)",
     },
 });
 
