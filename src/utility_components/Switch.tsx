@@ -1,6 +1,5 @@
 import React from "react";
-import { isContext } from "vm";
-import { Wrapper, OuterSwitch, InnerSwitch } from "./styles/Switch";
+import { Wrapper, OuterSwitch, InnerSwitch } from "./styles/SwitchMenuStyles";
 
 export default function Switch(): React.ReactElement {
     let [isEnabled, setEnabled] = React.useState(false);

@@ -1,24 +1,18 @@
-import React, { Component } from "react";
-import styles from "../scss/MenuItem.scss";
+import React from "react";
+import { Wrapper, TitleContainer } from "../styles/MenuItemStyles";
 
+type Action = (any?) => {type: string; payload: Record<string, any>}
 interface Props {
     title: string;
-    action?: (any?) => {type: string; payload: Record<string, any>};
-}
-interface State {
-
+    action: Action;
 }
 
-export default class MenuItem extends Component<Props, State> {
-    state = {};
-
-    render() {
-        let { title, action } = this.props;
-        return (
-            <div className={styles.menuItemWrapper} onClick={action}>
-                <div className={styles.menuItem} />
-                <p>{title}</p>
-            </div>
-        );
-    }
+export default function MenuItem(props: Props): React.ReactElement {
+    return (
+        <Wrapper onClick={props.action}>
+            <TitleContainer>
+                <p>{props.title}</p>
+            </TitleContainer>
+        </Wrapper>
+    );
 }

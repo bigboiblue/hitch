@@ -1,13 +1,14 @@
-.menuItemWrapper {
+import styled from "styled-components";
+
+export const Wrapper = styled.div`
     display: block;
     position: relative;
     flex: 1;
     background-color: rgb(248, 248, 248);
-    padding: 0.5rem 1rem 0.5rem 1rem;
-    border-radius: 0.3rem;
-}
+    padding: 0.25rem 1.25rem 0.25rem 1.25rem;
+`;
 
-.menuItem   {
+export const TitleContainer = styled.div`
     display: block;
     position: relative;
 
@@ -15,4 +16,4 @@
         font-size: 1rem;
         color: black;
     }
-}
+`;
