@@ -10,7 +10,7 @@ interface Props {
 
 export default function FlagBox(props: Props): React.ReactElement {
     let flagTitles = props.flags.map((value) => (
-        <Flag key={value.name} name={value.name} />
+        <Flag key={value.name} flagData={value} />
     ));
 
     return (

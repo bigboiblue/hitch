@@ -1,13 +1,17 @@
 import React from "react";
 import { Wrapper, OuterSwitch, InnerSwitch } from "./styles/SwitchMenuStyles";
 
-export default function Switch(): React.ReactElement {
-    let [isEnabled, setEnabled] = React.useState(false);
 
+interface Props {
+    isEnabled: boolean;
+    handleToggle: () => void;
+}
+
+export default function Switch(props: Props): React.ReactElement {
     return (
-        <Wrapper onClick={() => setEnabled(!isEnabled)}>
-            <OuterSwitch width="3rem" pose={isEnabled ? "enabled" : "disabled"}>
-                <InnerSwitch pose={isEnabled ? "enabled" : "disabled"} />
+        <Wrapper onClick={props.handleToggle}>
+            <OuterSwitch width="3rem" pose={props.isEnabled ? "enabled" : "disabled"}>
+                <InnerSwitch pose={props.isEnabled ? "enabled" : "disabled"} />
             </OuterSwitch>
         </Wrapper>
     );

@@ -1,17 +1,20 @@
 import React from "react";
 import { Wrapper, TitleContainer } from "../styles/MenuItemStyles";
 
-type Action = (any?) => {type: string; payload: Record<string, any>}
+type Action = (any?) => { type: string; payload: Record<string, any> }
 interface Props {
-    title: string;
-    action: Action;
+    menuItemData: MenuItemData;
 }
 
 export default function MenuItem(props: Props): React.ReactElement {
+    let {
+        title, color, backgroundColor, action,
+    } = props.menuItemData;
+
     return (
-        <Wrapper onClick={props.action}>
+        <Wrapper onClick={action}>
             <TitleContainer>
-                <p>{props.title}</p>
+                <p>{title}</p>
             </TitleContainer>
         </Wrapper>
     );

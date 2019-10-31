@@ -3,13 +3,12 @@ import {
     Wrapper, Dot, AnimatedDot, DotWrapper,
 } from "./styles/KebabMenuStyles";
 import DropDownMenu from "./DropDownMenu";
-import MenuItem from "./DropDownMenu/MenuItem";
 
 
-interface Props{
+interface Props {
     /** This should be in a fixed unit such as rem or px (not %) */
     height?: string;
-    menuItems: React.FunctionComponent<typeof MenuItem>[];
+    menuItemData: MenuItemData[];
 }
 
 
@@ -22,12 +21,12 @@ export default function NewKebabMenu(props: Props): React.ReactElement {
         return isMenuEnabled;
     }
 
-    // TODO: const height = props.height || themeContext.kebabMenuHeight
+    // TODO: THEMING const height = props.height || themeContext.kebabMenuHeight
     return (
         <>
             <DropDownMenu
                 position={middleDotRef}
-                menuItems={props.menuItems}
+                menuItemData={props.menuItemData}
                 handleToggle={toggleMenu}
                 isEnabled={isMenuEnabled}
             />

@@ -2,7 +2,7 @@ import React from "react";
 import { Container, Title, FlagBoxContainer } from "./styles/MainContainerStyles";
 import FlagBox from "./FlagBox";
 
-// TODO: Transfer mongoose code to a separate node.js server
+// TODO: SERVER Transfer mongoose code to a separate node.js server
 // import mongoose from "mongoose";
 
 // mongoose.connect("mongodb://localhost:27017/hitch", { useNewUrlParser: true });
@@ -18,7 +18,6 @@ import FlagBox from "./FlagBox";
 // const flagModel = mongoose.model("flag", flagsSchema);
 
 
-// TODO: NOW: load in initial state into switches
 const flags = [{
     _id: "5d8e0ab72c661b041ac23ef4",
     name: "Great Feature",
@@ -57,10 +56,9 @@ const flags = [{
 ];
 
 function getFlagBoxes(filter: string, flagArray: Record<string, any>[]):
-JSX.Element[] {
-    // TODO: Remove temporary flags array below
+    JSX.Element[] {
+    // TODO: SERVER Remove temporary flags array below
 
-    // ts-ignore
     let flagBoxes: JSX.Element[] = [];
     let uniqueFilterValues;
     if (filter === "type") {
@@ -83,14 +81,13 @@ interface Props {
 
 export default function MainContainer(props: Props): React.ReactElement {
     let filter = "type";
-    const flagBoxes = getFlagBoxes(filter, flags);
 
 
     return (
         <Container>
-            <Title>App - { props.title }</Title>
+            <Title>App - {props.title}</Title>
             <FlagBoxContainer>
-                {flagBoxes}
+                {getFlagBoxes(filter, flags)}
             </FlagBoxContainer>
         </Container>
     );

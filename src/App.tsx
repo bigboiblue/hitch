@@ -7,6 +7,7 @@ import thunk from "redux-thunk";
 import GlobalStyle from "./styles/GlobalStyle";
 import allReducer from "./reducers/index";
 import MainContainer from "./components/MainContainer";
+import NavBar from "./components/NavBar";
 import "@babel/polyfill";
 
 function App(): React.ReactElement {
@@ -20,8 +21,8 @@ function App(): React.ReactElement {
     return (
         <Provider store={store}>
             <GlobalStyle backgroundColor="#c8eafa" color="#000" />
-            {/* <NavBar style="vertical" navItems={navItems} /> */}
             <MainContainer title={title} />
+            {/* <NavBar type="vertical" /> */}
         </Provider>
     );
 }

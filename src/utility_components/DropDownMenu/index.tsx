@@ -1,27 +1,28 @@
 import React, { useRef, useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 import uuid from "uuid/v4";
-import MenuItem from "./MenuItem";
+import { catchClause } from "@babel/types";
 import { createElementWithIdAndAppend, getMidPoint } from "../../utilityFunctions";
 import { Wrapper, Container } from "../styles/DropDownMenuStyles";
+import MenuItem from "./MenuItem";
 
 
-type absoluteGlobalPosition = {left: number; top: number};
+type absoluteGlobalPosition = { left: number; top: number };
 type refPosition = React.MutableRefObject<HTMLElement>;
-type positionType = {left: number; top: number} | refPosition;
+type positionType = { left: number; top: number } | refPosition;
 
 interface Props {
     /** Position passed can either be an absolute window position ( {left: number; top: number} )
      * [in px] OR a DOM node ref can be passed ( React.MutableRefObject<HTMLElement> ). In this
      * case, the menu will be positioned to the center of the DOM node. */
     position: positionType;
-    menuItems: React.FunctionComponent<typeof MenuItem>[];
+    menuItemData: MenuItemData[];
     isEnabled: boolean;
     handleToggle: () => boolean;
 }
 
 function isAbsoluteGlobalPosition(obj: absoluteGlobalPosition | refPosition):
-obj is absoluteGlobalPosition {
+    obj is absoluteGlobalPosition {
     return typeof (obj as absoluteGlobalPosition).left === "number";
 }
 
@@ -85,7 +86,11 @@ export default function DropDownMenu(props: Props): React.ReactElement {
                             color="#0F5257"
                             padding="0.25rem"
                         >
-                            { props.menuItems }
+                            {
+                                props.menuItemData.map((value) => (
+                                    <MenuItem menuItemData={value} key={value.title} />
+                                ))
+                            }
                         </Container>
                     </Wrapper>,
                     document.getElementById(menuContainerId),
