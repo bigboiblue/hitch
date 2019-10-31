@@ -1,28 +1,26 @@
-import React, { Component } from "react";
+import React from "react";
+import LoginWidget from "./LoginWidget";
+import { Container, Spacer, MenuItemContainer } from "../styles/NavBarStyles";
+
 
 interface Props {
-    style: "horizontal" | "vertical";
+    type: "horizontal" | "vertical";
+    /** A floating point number representing the width / height of the navbar in rem */
+    size: number;
+    menuItems: MenuItemData[];
 }
-interface State {
-    height: number;
 
-}
+export default function NavBar(props: Props): React.ReactElement {
+    const menuItems = "Hello";
 
-export default class NavBar extends Component<Props, State> {
-    state = {}
-
-    render() {
-        let { style } = this.props;
-
-
-        if (style === "vertical") {
-            this.state.height = 100;
-            this.state.width = 100;
-        }
-        return (
-            <div>
-                <h1>{ title }</h1>
-            </div>
-        );
-    }
+    return (
+        <Container size={4.5} type={props.type}> {/*flex*/}
+            <Spacer />
+            <MenuItemContainer>
+                {menuItems}
+            </MenuItemContainer>
+            {/* <LoginWidget /> SPACER IS TEMP */}
+            <Spacer />
+        </Container>
+    );
 }

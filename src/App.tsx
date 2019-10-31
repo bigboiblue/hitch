@@ -22,7 +22,7 @@ function App(): React.ReactElement {
         <Provider store={store}>
             <GlobalStyle backgroundColor="#c8eafa" color="#000" />
             <MainContainer title={title} />
-            {/* <NavBar type="vertical" /> */}
+            <NavBar type="vertical" />
         </Provider>
     );
 }
