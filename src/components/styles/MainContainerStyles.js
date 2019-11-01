@@ -1,9 +1,12 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-    position: absolute;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     width: 100%;
-    height: 100%;
 `;
 
 export const Title = styled.h1`
@@ -16,6 +19,5 @@ export const Title = styled.h1`
 export const FlagBoxContainer = styled.div`
         display: flex;
         flex-direction: column;
-        margin: 0 auto;
         width: 60%; 
 `;

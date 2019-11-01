@@ -8,6 +8,7 @@ import GlobalStyle from "./styles/GlobalStyle";
 import allReducer from "./reducers/index";
 import MainContainer from "./components/MainContainer";
 import NavBar from "./components/NavBar";
+import { RootContainer } from "./styles/AppStyle";
 import "@babel/polyfill";
 
 function App(): React.ReactElement {
@@ -21,8 +22,10 @@ function App(): React.ReactElement {
     return (
         <Provider store={store}>
             <GlobalStyle backgroundColor="#c8eafa" color="#000" />
-            <MainContainer title={title} />
-            <NavBar type="vertical" />
+            <RootContainer>
+                <NavBar type="vertical" />
+                <MainContainer title={title} />
+            </RootContainer>
         </Provider>
     );
 }

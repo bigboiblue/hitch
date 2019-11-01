@@ -2,7 +2,7 @@ type Pair<T, C> = [T, C];
 
 
 /** MenuItemsData passed as {title, color?, backgroundColor?, action}[] */
-interface MenuItemData {
+type MenuItemData = {
     title: string;
     color?: string;
     backgroundColor?: string;

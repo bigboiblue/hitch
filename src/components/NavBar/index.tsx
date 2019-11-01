@@ -10,6 +10,7 @@ interface Props {
     menuItems: MenuItemData[];
 }
 
+
 export default function NavBar(props: Props): React.ReactElement {
     const menuItems = "Hello";
 

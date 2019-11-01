@@ -5,13 +5,12 @@ export const Spacer = styled.div`
 `;
 
 export const Container = styled.div`
-    position: absolute;
     display: flex;
     flex-direction: ${(props) => (props.type === "vertical" ? "column" : "row")};
-    background-color: #d6d28b;
+    background-color: #4786c4;
     height: ${(props) => (props.type === "vertical" ? "100vh" : `${props.size}rem`)};
     width: ${(props) => (props.type === "horizontal" ? "100vw" : `${props.size}rem`)};
-    position: fixed;
+    position: relative;
 `;
 
 export const MenuItemContainer = styled.div`
