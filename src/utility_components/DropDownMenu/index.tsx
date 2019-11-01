@@ -1,9 +1,8 @@
 import React, { useRef, useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 import uuid from "uuid/v4";
-import { catchClause } from "@babel/types";
 import { createElementWithIdAndAppend, getMidPoint } from "../../utilityFunctions";
-import { Wrapper, Container } from "../styles/DropDownMenuStyles";
+import { MenuContainer, Container, InvisibleClickable } from "../styles/DropDownMenuStyles";
 import MenuItem from "./MenuItem";
 
 
@@ -19,6 +18,7 @@ interface Props {
     menuItemData: MenuItemData[];
     isEnabled: boolean;
     handleToggle: () => boolean;
+    parent: string;
 }
 
 function isAbsoluteGlobalPosition(obj: absoluteGlobalPosition | refPosition):
@@ -70,29 +70,34 @@ export default function DropDownMenu(props: Props): React.ReactElement {
     useEffect(() => {
         updatePosition();
         window.addEventListener("resize", updatePosition);
+        window.addEventListener("scroll", updatePosition);
         return () => {
             window.removeEventListener("resize", updatePosition);
+            window.removeEventListener("scroll", updatePosition);
         };
     });
 
 
+    const currentPose = props.isEnabled && isAbsoluteGlobalPosition(position) ? "enabled" : "disabled";
     return (
         <>
             {
                 ReactDOM.createPortal(
-                    <Wrapper position={position}>
-                        <Container
-                            pose={props.isEnabled && isAbsoluteGlobalPosition(position) ? "enabled" : "disabled"}
+                    <Container isEnabled={props.isEnabled} pose={currentPose}>
+                        <InvisibleClickable isEnabled={props.isEnabled} onClick={props.handleToggle} />
+                        <MenuContainer
+                            pose={currentPose}
                             color="#0F5257"
                             padding="0.25rem"
+                            position={position}
                         >
                             {
                                 props.menuItemData.map((value) => (
                                     <MenuItem menuItemData={value} key={value.title} />
                                 ))
                             }
-                        </Container>
-                    </Wrapper>,
+                        </MenuContainer>
+                    </Container>,
                     document.getElementById(menuContainerId),
                 )
             }

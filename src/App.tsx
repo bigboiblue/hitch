@@ -22,7 +22,7 @@ function App(): React.ReactElement {
     return (
         <Provider store={store}>
             <GlobalStyle backgroundColor="#c8eafa" color="#000" />
-            <RootContainer>
+            <RootContainer id="rootContainer">
                 <NavBar type="vertical" />
                 <MainContainer title={title} />
             </RootContainer>

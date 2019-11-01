@@ -5,8 +5,11 @@ export const Container = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
 `;
 
 export const Title = styled.h1`
@@ -19,5 +22,5 @@ export const Title = styled.h1`
 export const FlagBoxContainer = styled.div`
         display: flex;
         flex-direction: column;
-        width: 60%; 
+        width: 60%;
 `;

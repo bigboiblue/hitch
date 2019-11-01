@@ -8,6 +8,7 @@ import DropDownMenu from "./DropDownMenu";
 interface Props {
     /** This should be in a fixed unit such as rem or px (not %) */
     height?: string;
+    parent: string;
     menuItemData: MenuItemData[];
 }
 
@@ -28,6 +29,7 @@ export default function NewKebabMenu(props: Props): React.ReactElement {
                 position={middleDotRef}
                 menuItemData={props.menuItemData}
                 handleToggle={toggleMenu}
+                parent={props.parent}
                 isEnabled={isMenuEnabled}
             />
             <Wrapper onClick={toggleMenu} height={props.height}>
