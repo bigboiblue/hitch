@@ -8,9 +8,9 @@ export const Wrapper = styled.div`
     position: absolute;
     display: flex;
     flex-direction: column;
-    height: ${(props) => props.height || "2rem"};
-    width: ${(props) => parseCssCalc(`${props.height} * 0.75`, "1.5rem")};
-    padding: ${(props) => parseCssCalc(`${props.height} / 8`, "0.25rem")};
+    height: ${(props) => `${props.theme.height}rem`};
+    width: ${(props) => `${props.theme.height * 0.75}rem`};
+    padding: ${(props) => `${props.theme.height / 8}rem`};
 
 `;
 
@@ -24,19 +24,22 @@ export const DotWrapper = styled.div`
 
 export const Dot = styled.div`
     position: absolute;
-    height: ${(props) => parseCssCalc(`${props.height} / 8`, "0.25rem")};
-    width: ${(props) => parseCssCalc(`${props.height} / 8`, "0.25rem")};
-    border-radius: ${(props) => parseCssCalc(`${props.height} / 16`, "0.125rem")};
-    background-color: ${(props) => props.color || "rgb(88, 88, 88)"};
+    height: ${(props) => `${props.theme.height / 8}rem`};
+    width: ${(props) => `${props.theme.height / 8}rem`};
+    border-radius: ${(props) => `${props.theme.height / 16}rem`};
+    background-color: ${(props) => props.theme.color};
 `;
 
 
 export const AnimatedDot = posed(Dot)({
     menuDisabled: {
-        transform: "scale(1, 1)",
+        transform: (props) => `scale(${props.theme.middleDotSize}`,
+    },
+    menuHover: {
+        transform: (props) => `scale(${props.theme.hover.middleDotSize}`,
     },
     menuEnabled: {
-        transform: "scale(5.5, 5.5)",
+        transform: (props) => `scale(${props.theme.click.middleDotSize}`,
     },
 });
 

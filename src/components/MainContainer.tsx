@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Container, Title, FlagBoxContainer } from "./styles/MainContainerStyles";
 import FlagBox from "./FlagBox";
+import { ThemeContext } from "../styles/GlobalUserTheme";
 
 // TODO: SERVER Transfer mongoose code to a separate node.js server
 // import mongoose from "mongoose";
@@ -22,21 +23,21 @@ const flags = [{
     _id: "5d8e0ab72c661b041ac23ef4",
     name: "Great Feature",
     isEnabled: true,
-    type: "toggle",
+    type: "Toggle",
     dateCreated: 1569589943822,
 },
 {
     _id: "5d8e0ab72c661b041ac23ef5",
     name: "Shit Feature",
     isEnabled: false,
-    type: "toggle",
+    type: "Toggle",
     dateCreated: 1569589943822,
 },
 {
     _id: "5d8e0ab72c661b041ac23ef6",
     name: "My First Feature",
     isEnabled: true,
-    type: "toggle",
+    type: "Toggle",
     dateCreated: 1569589943822,
 },
 {
@@ -61,15 +62,14 @@ function getFlagBoxes(filter: string, flagArray: Record<string, any>[]):
 
     let flagBoxes: JSX.Element[] = [];
     let uniqueFilterValues;
-    if (filter === "type") {
+    if (filter.toUpperCase() === "TYPE") {
         uniqueFilterValues = [...new Set(flagArray.map((value) => value.type))];
     }
 
     for (let i = 0; i < uniqueFilterValues.length; ++i) {
         const filteredFlags = flagArray.filter((value) => value.type === uniqueFilterValues[i]);
-        const title = `${filter}: ${uniqueFilterValues[i]}`;
         flagBoxes.push(
-            <FlagBox key={i} title={title} flags={filteredFlags} />,
+            <FlagBox key={i} filter={filter} flagsData={filteredFlags} />,
         );
     }
     return flagBoxes;
@@ -80,14 +80,15 @@ interface Props {
 }
 
 export default function MainContainer(props: Props): React.ReactElement {
-    let filter = "type";
+    let theme = useContext(ThemeContext).main;
+    let filter = "Type";
 
     //TODO: BIG REDUX At some point completely redo architecture of dropdown/context menu so that it
     //renders here. MenuItems and styling would be obtained from redux store. Maybe this would
     //warrent rewriting all components to make better use of redux;
     return (
-        <Container>
-            <Title>App - {props.title}</Title>
+        <Container theme={theme}>
+            <Title theme={theme}>App - {props.title}</Title>
             <FlagBoxContainer>
                 {getFlagBoxes(filter, flags)}
             </FlagBoxContainer>

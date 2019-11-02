@@ -24,9 +24,9 @@ export function parseCssCalc(calc: string, defaultValue: string): string {
  * Returns: The HTMLElement which was created and appended
  */
 export function createElementWithIdAndAppend(tagName: string, id: string, parent: HTMLElement):
-HTMLElement {
+    HTMLElement {
     if (!document.getElementById(id)) {
-    //createDropDownMenuContainer();
+        //createDropDownMenuContainer();
         const element = document.createElement(tagName);
         element.id = id;
         parent.appendChild(element);
@@ -39,7 +39,7 @@ HTMLElement {
  * returned is in the format (similar to css) {left: number; top: number} and
  * is relative to the entire window (global position)
  */
-export function getMidPoint(element: HTMLElement): {left: number; top: number} {
+export function getMidPoint(element: HTMLElement): { left: number; top: number } {
     const {
         left, top, width, height,
     } = element.getBoundingClientRect();
@@ -48,4 +48,9 @@ export function getMidPoint(element: HTMLElement): {left: number; top: number} {
         top: top + (height / 2),
     };
     return midPoint;
+}
+
+
+export function capitalizeFirstLetter(str: string): string {
+    return str.charAt(0).toUpperCase() + str.slice(1);
 }

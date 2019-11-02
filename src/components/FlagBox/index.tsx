@@ -1,25 +1,28 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Container, BoxTitle, List } from "../styles/FlagBoxStyles";
 import Flag from "./Flag";
+import { ThemeContext } from "../../styles/GlobalUserTheme";
 
 
 interface Props {
-    title: string;
-    flags: Record<string, any>;
+    filter: string;
+    flagsData: FlagData[];
 }
 
 //TODO: BUG fix padding flag padding issue
 //(when window is sized to be very small, padding doesn't remain consistent)
 export default function FlagBox(props: Props): React.ReactElement {
-    let flagTitles = props.flags.map((value) => (
+    let theme = useContext(ThemeContext).flagBox;
+
+    let flags = props.flagsData.map((value) => (
         <Flag key={value.name} flagData={value} />
     ));
 
     return (
-        <Container>
-            <BoxTitle>{props.title}</BoxTitle>
+        <Container theme={theme}>
+            <BoxTitle theme={theme}>{`${props.filter}: ${props.flagsData[0].type}`}</BoxTitle>
             <List>
-                {flagTitles}
+                {flags}
             </List>
         </Container>
     );

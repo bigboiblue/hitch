@@ -1,18 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import {
     Container, Title, SwitchWrapper, KebabMenuWrapper,
 } from "../styles/FlagStyles";
 
 import Switch from "../../utility_components/Switch";
 import KebabMenu from "../../utility_components/KebabMenu";
-
-interface FlagData {
-    _id: string;
-    name: string;
-    isEnabled: boolean;
-    type: string;
-    dateCreated: number;
-}
+import { ThemeContext } from "../../styles/GlobalUserTheme";
 
 interface Props {
     flagData: FlagData;
@@ -29,19 +22,20 @@ export default function Flag(props: Props): React.ReactElement {
         _id, name, type, dateCreated,
     } = props.flagData;
     let [isEnabled, setIsEnabled] = useState(props.flagData.isEnabled);
+    let theme = useContext(ThemeContext).flagBox.flag;
 
     function handleToggle(): void {
         setIsEnabled(!isEnabled);
     }
 
     return (
-        <Container>
+        <Container theme={theme}>
             <SwitchWrapper>
-                <Switch isEnabled={isEnabled} handleToggle={handleToggle} />
+                <Switch isEnabled={isEnabled} handleToggle={handleToggle} theme={theme.switch} />
             </SwitchWrapper>
-            <Title key={_id}>{name}</Title>
+            <Title key={_id} theme={theme}>{name}</Title>
             <KebabMenuWrapper>
-                <KebabMenu menuItemData={tempMenuItems} />
+                <KebabMenu menuItemData={tempMenuItems} theme={theme.kebabMenu} />
             </KebabMenuWrapper>
         </Container>
     );

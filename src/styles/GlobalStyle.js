@@ -278,12 +278,7 @@ const ModernNormalise = css`
 `;
 
 const GlobalStyle = createGlobalStyle`
-
-${ModernNormalise}
-    body {
-        color: ${(props) => props.color};
-        background-color: ${(props) => props.backgroundColor};
-    }
+    ${ModernNormalise}
 `;
 
 export default GlobalStyle;

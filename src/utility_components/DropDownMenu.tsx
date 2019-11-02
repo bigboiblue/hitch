@@ -1,9 +1,10 @@
 import React, { useRef, useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 import uuid from "uuid/v4";
-import { createElementWithIdAndAppend, getMidPoint } from "../../utilityFunctions";
-import { MenuContainer, Container, InvisibleClickable } from "../styles/DropDownMenuStyles";
+import { createElementWithIdAndAppend, getMidPoint } from "../utilityFunctions";
+import { MenuContainer, Container, InvisibleClickable } from "./styles/DropDownMenuStyles";
 import MenuItem from "./MenuItem";
+import { DropMenuTheme } from "../styles/GlobalUserTheme";
 
 
 type absoluteGlobalPosition = { left: number; top: number };
@@ -18,7 +19,7 @@ interface Props {
     menuItemData: MenuItemData[];
     isEnabled: boolean;
     handleToggle: () => boolean;
-    parent: string;
+    theme: DropMenuTheme;
 }
 
 function isAbsoluteGlobalPosition(obj: absoluteGlobalPosition | refPosition):
@@ -93,7 +94,7 @@ export default function DropDownMenu(props: Props): React.ReactElement {
                         >
                             {
                                 props.menuItemData.map((value) => (
-                                    <MenuItem menuItemData={value} key={value.title} />
+                                    <MenuItem menuItemData={value} key={value.title} theme={props.theme.menuItem} />
                                 ))
                             }
                         </MenuContainer>

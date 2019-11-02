@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.div`
     position: relative;
+    background-color: ${(props) => props.theme.backgroundColor};
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -16,11 +17,14 @@ export const Title = styled.h1`
     margin: 0;
     text-transform:capitalize;
     text-align: center;
+    font-size: ${(props) => `${props.theme.titleSize}rem`};
+    font-family: ${(props) => props.theme.titleFontFamily};
+    color: ${(props) => props.theme.foregroundColor};
     padding: 30px;
 `;
 
 export const FlagBoxContainer = styled.div`
         display: flex;
         flex-direction: column;
-        width: 60%;
+        width: 40%;
 `;

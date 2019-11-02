@@ -4,11 +4,15 @@ export const Container = styled.div`
     display: flex;
     position: relative;
     justify-content: center;
+    background-color: ${(props) => props.theme.backgroundColor}
 `;
 
 export const Title = styled.li`
+    font-size: ${(props) => `${props.theme.fontSize}rem`};
+    font-family: ${(props) => props.theme.fontFamily};
+    color: ${(props) => props.theme.foregroundColor};
     padding: 20px;
-    flex: 12;
+    flex: 1;
 `;
 
 export const SwitchWrapper = styled.div`
