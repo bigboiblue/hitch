@@ -12,7 +12,7 @@ export const Title = styled.li`
 `;
 
 export const SwitchWrapper = styled.div`
-    flex: 1;
+    width: 5rem;
     position: relative;
     display: flex;
     justify-content: center;
@@ -20,7 +20,7 @@ export const SwitchWrapper = styled.div`
 `;
 
 export const KebabMenuWrapper = styled.div`
-    flex: 1;
+    width: 3.5rem;
     position: relative;
     display: flex;
     justify-content: center;

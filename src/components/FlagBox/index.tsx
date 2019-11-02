@@ -8,6 +8,8 @@ interface Props {
     flags: Record<string, any>;
 }
 
+//TODO: BUG fix padding flag padding issue
+//(when window is sized to be very small, padding doesn't remain consistent)
 export default function FlagBox(props: Props): React.ReactElement {
     let flagTitles = props.flags.map((value) => (
         <Flag key={value.name} flagData={value} />

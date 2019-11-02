@@ -19,5 +19,6 @@ export const Container = styled.div`
 
 export const List = styled.ul`
     list-style: none;
+    position: relative;
     padding-left: 0;
 `;

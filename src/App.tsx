@@ -17,6 +17,8 @@ function App(): React.ReactElement {
         // @ts-ignore //
         window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
     );
+
+
     let store = createStore(allReducer, storeEnhancers);
     let title = "My Application 1";
     return (

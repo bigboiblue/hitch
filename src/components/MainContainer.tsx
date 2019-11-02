@@ -82,7 +82,9 @@ interface Props {
 export default function MainContainer(props: Props): React.ReactElement {
     let filter = "type";
 
-
+    //TODO: BIG REDUX At some point completely redo architecture of dropdown/context menu so that it
+    //renders here. MenuItems and styling would be obtained from redux store. Maybe this would
+    //warrent rewriting all components to make better use of redux;
     return (
         <Container>
             <Title>App - {props.title}</Title>
