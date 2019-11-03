@@ -34,8 +34,6 @@ export type KebabMenuTheme = {
     hover: {
         backgroundColor: string;
         foregroundColor: string;
-        /** As a scale factor relative to other dot sizes (1 is default) */
-        middleDotSize: number;
     };
     click: {
         backgroundColor: string;
@@ -90,7 +88,6 @@ export type ThemeType = {
 }
 
 /* TODO: SERVER: Replace default theme value with a theme loaded from DB */
-// TODO: THEME make a type ThemeType as a theme schema, and use in all props for static checking
 //This file is essentially json. Replace this with theme data from db
 export const tempTheme: ThemeType = {
     main: {
@@ -104,8 +101,7 @@ export const tempTheme: ThemeType = {
     navbar: {
         backgroundColor: "#0e9bcc",
         size: 4.5, //in rem
-        //TODO: Theme get horizontal and vertical working
-        type: "vertical",
+        type: "horizontal",
         padding: "",
         menuItem: {
             fontSize: 1,
@@ -113,7 +109,7 @@ export const tempTheme: ThemeType = {
             backgroundColor: "#40b3db",
             foregroundColor: "#ffffff",
             padding: "",
-            //TODO: Theming hover click effects (material design)
+            //TODO: THEMING hover click effects (material design)
             hover: {
                 backgroundColor: "",
                 foregroundColor: "",
@@ -148,7 +144,6 @@ export const tempTheme: ThemeType = {
                 hover: {
                     backgroundColor: "",
                     foregroundColor: "",
-                    middleDotSize: 1.5,
                 },
                 click: {
                     backgroundColor: "",
@@ -160,11 +155,10 @@ export const tempTheme: ThemeType = {
                     padding: "",
                     menuItem: {
                         fontSize: 1,
-                        fontFamily: "serif",
+                        fontFamily: "sans-serif",
                         backgroundColor: "#ffffff",
                         foregroundColor: "#000000",
                         padding: "",
-                        //TODO: Theming hover click effects (material design)
                         hover: {
                             backgroundColor: "",
                             foregroundColor: "",

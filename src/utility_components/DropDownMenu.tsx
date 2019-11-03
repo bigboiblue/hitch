@@ -85,7 +85,10 @@ export default function DropDownMenu(props: Props): React.ReactElement {
             {
                 ReactDOM.createPortal(
                     <Container isEnabled={props.isEnabled} pose={currentPose}>
-                        <InvisibleClickable isEnabled={props.isEnabled} onClick={props.handleToggle} />
+                        <InvisibleClickable
+                            isEnabled={props.isEnabled}
+                            onClick={props.handleToggle}
+                        />
                         <MenuContainer
                             pose={currentPose}
                             color="#0F5257"
@@ -94,7 +97,11 @@ export default function DropDownMenu(props: Props): React.ReactElement {
                         >
                             {
                                 props.menuItemData.map((value) => (
-                                    <MenuItem menuItemData={value} key={value.title} theme={props.theme.menuItem} />
+                                    <MenuItem
+                                        menuItemData={value}
+                                        key={value.title}
+                                        theme={props.theme.menuItem}
+                                    />
                                 ))
                             }
                         </MenuContainer>

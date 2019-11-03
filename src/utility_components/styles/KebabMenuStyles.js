@@ -1,8 +1,5 @@
 import styled from "styled-components";
 import posed from "react-pose";
-import { parseCssCalc } from "../../utilityFunctions";
-import { centerElement } from "../../styles/mixins";
-
 
 export const Wrapper = styled.div`
     position: absolute;
@@ -11,7 +8,6 @@ export const Wrapper = styled.div`
     height: ${(props) => `${props.theme.height}rem`};
     width: ${(props) => `${props.theme.height * 0.75}rem`};
     padding: ${(props) => `${props.theme.height / 8}rem`};
-
 `;
 
 export const DotWrapper = styled.div`
@@ -34,9 +30,6 @@ export const Dot = styled.div`
 export const AnimatedDot = posed(Dot)({
     menuDisabled: {
         transform: (props) => `scale(${props.theme.middleDotSize}`,
-    },
-    menuHover: {
-        transform: (props) => `scale(${props.theme.hover.middleDotSize}`,
     },
     menuEnabled: {
         transform: (props) => `scale(${props.theme.click.middleDotSize}`,

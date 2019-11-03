@@ -1,8 +1,7 @@
 import React from "react";
-import LoginWidget from "./LoginWidget";
-import MenuItem from "../MenuItem";
-import { Container, Spacer, MenuItemContainer } from "../../components/styles/NavBarStyles";
-import { ThemeType } from "../../styles/GlobalUserTheme";
+import MenuItem from "./MenuItem";
+import { Container, Spacer, MenuItemContainer } from "../components/styles/NavBarStyles";
+import { ThemeType } from "../styles/GlobalUserTheme";
 
 interface Props {
     theme: ThemeType["navbar"];

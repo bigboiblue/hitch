@@ -2,9 +2,9 @@ import styled from "styled-components";
 
 export const RootContainer = styled.div` 
     display: flex;
-    flex-direction: row;
+    flex-direction: ${(props) => (props.theme.navbar.type === "vertical" ? "row" : "column")};
     height: 100%;
-    width: 100vw;
+    width: 100%;
     position: absolute;
     align-items: flex-start;
 `;

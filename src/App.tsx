@@ -27,14 +27,14 @@ function App(): React.ReactElement {
 
     //TODO: THEMING Create awesome polygon based background that slightly manipulates color based on mouse position
 
-    //TODO: VISUAL add media queries and make the page reponsive and mobile friendly
+    //TODO: MOBILE add media queries and make the page reponsive and mobile friendly
     let store = createStore(allReducer, storeEnhancers);
     let title = "My Application 1";
     return (
         <Provider store={store}>
             <GlobalStyle backgroundColor="#c8eafa" color="#000" />
             <ThemeContext.Provider value={tempTheme}>
-                <RootContainer id="rootContainer">
+                <RootContainer id="rootContainer" theme={tempTheme}>
                     <NavBar theme={tempTheme.navbar} menuItemData={tempNavMenuItems} />
                     <MainContainer title={title} />
                 </RootContainer>

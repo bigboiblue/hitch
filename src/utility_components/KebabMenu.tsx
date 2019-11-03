@@ -3,7 +3,7 @@ import {
     Wrapper, Dot, AnimatedDot, DotWrapper,
 } from "./styles/KebabMenuStyles";
 import DropDownMenu from "./DropDownMenu";
-import { KebabMenuTheme, ThemeContext } from "../styles/GlobalUserTheme";
+import { KebabMenuTheme } from "../styles/GlobalUserTheme";
 
 
 interface Props {
@@ -24,7 +24,6 @@ export default function NewKebabMenu(props: Props): React.ReactElement {
         return isMenuEnabled;
     }
 
-    // TODO: THEMING const height = props.height || themeContext.kebabMenuHeight
     return (
         <>
             <DropDownMenu
@@ -47,7 +46,7 @@ export default function NewKebabMenu(props: Props): React.ReactElement {
                     <AnimatedDot
                         ref={(ref) => { middleDotRef.current = ref; }}
                         theme={props.theme}
-                        pose={isMenuEnabled ? "menuEnabled" : (isHovering ? "menuHover" : "menuDisabled")}
+                        pose={isMenuEnabled ? "menuEnabled" : "menuDisabled"}
                     />
                 </DotWrapper>
                 <DotWrapper>

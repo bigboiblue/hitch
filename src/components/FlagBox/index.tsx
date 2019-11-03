@@ -9,8 +9,6 @@ interface Props {
     flagsData: FlagData[];
 }
 
-//TODO: BUG fix padding flag padding issue
-//(when window is sized to be very small, padding doesn't remain consistent)
 export default function FlagBox(props: Props): React.ReactElement {
     let theme = useContext(ThemeContext).flagBox;
 
