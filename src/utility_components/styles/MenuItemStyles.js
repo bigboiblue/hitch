@@ -1,7 +1,9 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: relative;
     flex: 1;
     background-color: ${(props) => props.theme.backgroundColor};

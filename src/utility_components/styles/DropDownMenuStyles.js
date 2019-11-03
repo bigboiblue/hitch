@@ -25,7 +25,7 @@ export const InvisibleClickable = styled.div`
     width: 100%;
     position: absolute;
     z-index: 9;
-    visibility: ${(props) => (props.isEnabled ? "visible" : "hidden")}
+    visibility: ${(props) => (props.isEnabled ? "visible" : "hidden")};
 `;
 
 const MenuContainerCore = styled.div`
@@ -43,7 +43,7 @@ const MenuContainerCore = styled.div`
 export const MenuContainer = posed(MenuContainerCore)({
     disabled: {
         scale: 0,
-        backgroundColor: "#fff",
+        backgroundColor: "#000",
         originX: "20%",
         originY: "20%",
         transition: {
@@ -59,7 +59,7 @@ export const MenuContainer = posed(MenuContainerCore)({
     },
     enabled: {
         scale: 1,
-        backgroundColor: (props) => props.color,
+        backgroundColor: (props) => props.theme.outlineColor,
         originX: "20%",
         originY: "20%",
         transition: {

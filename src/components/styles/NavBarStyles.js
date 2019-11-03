@@ -8,8 +8,8 @@ export const Container = styled.div`
     display: flex;
     flex-direction: ${(props) => (props.theme.type === "vertical" ? "column" : "row")};
     background-color: ${(props) => props.theme.backgroundColor};
-    height: ${(props) => (props.theme.type === "vertical" ? "100%" : `${props.size}rem`)};
-    width: ${(props) => (props.theme.type === "horizontal" ? "100%" : `${props.size}rem`)};
+    height: ${(props) => (props.theme.type === "vertical" ? "100%" : `${props.theme.size}rem`)};
+    width: ${(props) => (props.theme.type === "horizontal" ? "100%" : `${props.theme.size}rem`)};
     position: relative;
 `;
 
@@ -21,4 +21,5 @@ export const MenuItemContainer = styled.div`
     position: relative;
     align-items: center;
     justify-content: center;
+    width: 100%;
 `;

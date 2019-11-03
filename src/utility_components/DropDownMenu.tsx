@@ -94,6 +94,7 @@ export default function DropDownMenu(props: Props): React.ReactElement {
                             color="#0F5257"
                             padding="0.25rem"
                             position={position}
+                            theme={props.theme}
                         >
                             {
                                 props.menuItemData.map((value) => (

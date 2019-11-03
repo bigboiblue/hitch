@@ -1,6 +1,7 @@
 import React from "react";
 import { Wrapper, TitleContainer } from "./styles/MenuItemStyles";
 import { MenuItemTheme } from "../styles/GlobalUserTheme";
+import ControlPanelIcon from "../assets/svg_icons/ControlPanelIcon";
 
 type Action = (any?) => { type: string; payload: Record<string, any> }
 interface Props {

@@ -17,6 +17,11 @@ module.exports = {
                 loader: "babel-loader",
             },
             {
+                test: /\.svg$/,
+                include: path.resolve(__dirname, "src"),
+                loader: "@svgr/webpack",
+            },
+            {
                 test: /\.scss$/,
                 include: path.resolve(__dirname, "src"),
                 use: [

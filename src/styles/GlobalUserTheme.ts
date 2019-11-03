@@ -54,9 +54,9 @@ export type SwitchTheme = {
 
 export type ThemeType = {
     main: {
-        backgroundColor: "#9edbf0"; //May be more complex (some svg or pattern)
-        dynamicBackground: true;
-        foregroundColor: "#000000"; //Essentially title color
+        backgroundColor: string; //May be more complex (some svg or pattern)
+        dynamicBackground: boolean;
+        foregroundColor: string; //Essentially title color
         /** Unit in rem */
         titleSize: number;
         titleFontFamily: string;
@@ -94,20 +94,20 @@ export const tempTheme: ThemeType = {
         /** Unit in rem */
         titleSize: 2,
         titleFontFamily: "sans-serif",
-        backgroundColor: "#9edbf0", //May be more complex (some svg or pattern)
+        backgroundColor: "#f5d7c4", //May be more complex (some svg or pattern)
         dynamicBackground: true,
-        foregroundColor: "#000000", //Essentially title color
+        foregroundColor: "#57424e", //Essentially title color
     },
     navbar: {
-        backgroundColor: "#0e9bcc",
+        backgroundColor: "#6C4B5E",
         size: 4.5, //in rem
         type: "horizontal",
         padding: "",
         menuItem: {
             fontSize: 1,
             fontFamily: "sans-serif",
-            backgroundColor: "#40b3db",
-            foregroundColor: "#ffffff",
+            backgroundColor: "#91667f",
+            foregroundColor: "#cccccc",
             padding: "",
             //TODO: THEMING hover click effects (material design)
             hover: {
@@ -121,20 +121,20 @@ export const tempTheme: ThemeType = {
         },
     },
     flagBox: {
-        backgroundColor: "#ffffff",
-        titleBackgroundColor: "#DDDDDD",
-        titleForegroundColor: "#000000",
+        backgroundColor: "#a37f98",
+        titleBackgroundColor: "#5e3f54",
+        titleForegroundColor: "#eeeeee",
         titleFontSize: 1.5,
         titleFontFamily: "sans-serif",
         flag: {
             backgroundColor: "rgba(255, 255, 255, 0.0)",
-            foregroundColor: "#444444",
+            foregroundColor: "#eeeeee",
             fontSize: 1,
             fontFamily: "sans-serif",
             switch: {
-                enabledColor: "#05a1f0",
-                disabledColor: "#bbbbbb",
-                innerCircleColor: "#eeeeee",
+                enabledColor: "#f5ac95",
+                disabledColor: "#eeeeee",
+                innerCircleColor: "#6C4B5E",
                 width: 3,
             },
             kebabMenu: {
@@ -151,13 +151,13 @@ export const tempTheme: ThemeType = {
                     middleDotSize: 5.5,
                 },
                 dropDownMenu: {
-                    outlineColor: "#0c7091",
+                    outlineColor: "#5e3f54",
                     padding: "",
                     menuItem: {
                         fontSize: 1,
                         fontFamily: "sans-serif",
-                        backgroundColor: "#ffffff",
-                        foregroundColor: "#000000",
+                        backgroundColor: "#eeeeee",
+                        foregroundColor: "#5e3f54",
                         padding: "",
                         hover: {
                             backgroundColor: "",
