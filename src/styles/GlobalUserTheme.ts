@@ -8,6 +8,7 @@ export type MenuItemTheme = {
     /** Unit in rem */
     fontSize: number;
     fontFamily: string;
+    textAlign: string;
     padding: string;
     hover: {
         backgroundColor: string;
@@ -108,7 +109,8 @@ export const tempTheme: ThemeType = {
             fontFamily: "sans-serif",
             backgroundColor: "#91667f",
             foregroundColor: "#cccccc",
-            padding: "0",
+            padding: "2rem",
+            textAlign: "center",
             //TODO: THEMING hover click effects (material design)
             hover: {
                 backgroundColor: "",
@@ -159,6 +161,8 @@ export const tempTheme: ThemeType = {
                         backgroundColor: "#eeeeee",
                         foregroundColor: "#5e3f54",
                         padding: "0.5rem 1rem 0.5rem 1rem",
+                        //TODO: THEMING Fix textAlign
+                        textAlign: "left",
                         hover: {
                             backgroundColor: "",
                             foregroundColor: "",

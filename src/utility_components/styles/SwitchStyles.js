@@ -9,6 +9,7 @@ const OuterSwitchStyle = styled.div`
     position: relative;
     display:flex;
     align-items: center;
+    justify-content: flex-start;
     width: ${(props) => `${props.theme.width}rem`};
     height: ${(props) => `${props.theme.width / 2}rem`};
     border-radius: ${(props) => `${props.theme.width / 2}rem`}; 
@@ -18,8 +19,8 @@ const OuterSwitchStyle = styled.div`
 
 const InnerSwitchStyle = styled.div`
     position: absolute;
-    height: 80%;
-    width: 40%;
+    height: 85%;
+    width: 42.5%;
     border-radius: ${(props) => `${props.theme.width / 2}rem`};
     background-color: ${(props) => props.theme.innerCircleColor};
     display: block;

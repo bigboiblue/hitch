@@ -22,6 +22,6 @@ export const TitleContainer = styled.div`
         font-size: ${(props) => `${props.theme.fontSize}rem`};
         font-family: ${(props) => props.theme.fontFamily};
         color: ${(props) => props.theme.foregroundColor};
-        text-align: center
+        text-align: center;
     }
 `;

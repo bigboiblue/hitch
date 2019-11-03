@@ -14,12 +14,11 @@ export const Container = styled.div`
 `;
 
 export const MenuItemContainer = styled.div`
-    flex: 1;
+    flex-shrink: 20;
     display: flex;
     padding: ${(props) => `${props.theme.padding}rem`};
     flex-direction: ${(props) => (props.theme.type === "vertical" ? "column" : "row")};;
     position: relative;
     align-items: center;
     justify-content: center;
-    width: 100%;
 `;
