@@ -2,7 +2,9 @@ import React, { useRef, useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 import uuid from "uuid/v4";
 import { createElementWithIdAndAppend, getMidPoint } from "../utilityFunctions";
-import { MenuContainer, Container, InvisibleClickable } from "./styles/DropDownMenuStyles";
+import {
+    MenuContainerWrapper, MenuContainer, Container, InvisibleClickable, Spacer,
+} from "./styles/DropDownMenuStyles";
 import MenuItem from "./MenuItem";
 import { DropMenuTheme } from "../styles/GlobalUserTheme";
 
@@ -89,23 +91,31 @@ export default function DropDownMenu(props: Props): React.ReactElement {
                             isEnabled={props.isEnabled}
                             onClick={props.handleToggle}
                         />
-                        <MenuContainer
+                        <MenuContainerWrapper
                             pose={currentPose}
                             color="#0F5257"
                             padding="0.25rem"
                             position={position}
                             theme={props.theme}
                         >
-                            {
-                                props.menuItemData.map((value) => (
-                                    <MenuItem
-                                        menuItemData={value}
-                                        key={value.title}
-                                        theme={props.theme.menuItem}
-                                    />
-                                ))
-                            }
-                        </MenuContainer>
+                            <MenuContainer>
+                                {
+                                    props.menuItemData.map((value, index) => {
+                                        const spacer = (index < props.menuItemData.length ? <Spacer /> : <></>);
+                                        return (
+                                            <>
+                                                <MenuItem
+                                                    menuItemData={value}
+                                                    key={value.title}
+                                                    theme={props.theme.menuItem}
+                                                />
+                                                {spacer}
+                                            </>
+                                        );
+                                    })
+                                }
+                            </MenuContainer>
+                        </MenuContainerWrapper>
                     </Container>,
                     document.getElementById(menuContainerId),
                 )

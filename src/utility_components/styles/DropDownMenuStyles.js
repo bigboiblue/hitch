@@ -28,19 +28,17 @@ export const InvisibleClickable = styled.div`
     visibility: ${(props) => (props.isEnabled ? "visible" : "hidden")};
 `;
 
-const MenuContainerCore = styled.div`
+const MenuContainerWrapperCore = styled.div`
     position: absolute;
     z-index: 10;
-    padding: ${(props) => props.padding};
-    display: flex;
-    flex-direction: column;
-    border-radius: 0.25rem;
+    padding: ${(props) => props.theme.padding};
+    border-radius: 0.3rem;
     overflow: hidden;
     left: ${(props) => (props.position ? `${props.position.left}px` : 0)};
     top: ${(props) => (props.position ? `${props.position.top}px` : 0)};
 `;
 
-export const MenuContainer = posed(MenuContainerCore)({
+export const MenuContainerWrapper = posed(MenuContainerWrapperCore)({
     disabled: {
         scale: 0,
         backgroundColor: "#000",
@@ -78,3 +76,25 @@ export const MenuContainer = posed(MenuContainerCore)({
         },
     },
 });
+
+export const MenuContainer = styled.div`
+    display: block;
+    position: relative;
+    height: 100%;
+    width: 100%;
+    border-radius: 0.2rem;
+    overflow: hidden;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+`;
+
+export const Spacer = styled.div`
+    display: inline-block;
+    width: 90%;
+    height: 1px;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 1;
+    margin-bottom: -1px;
+`;

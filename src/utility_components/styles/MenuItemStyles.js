@@ -7,7 +7,9 @@ export const Wrapper = styled.div`
     position: relative;
     flex: 1;
     background-color: ${(props) => props.theme.backgroundColor};
-    padding: 0.25rem 1.25rem 0.25rem 1.25rem;
+    padding: ${(props) => props.theme.padding};
+    margin: 0;
+    line-height: 0;
     height: 100%;
     width: 100%;
 `;

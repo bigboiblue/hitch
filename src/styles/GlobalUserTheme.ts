@@ -108,7 +108,7 @@ export const tempTheme: ThemeType = {
             fontFamily: "sans-serif",
             backgroundColor: "#91667f",
             foregroundColor: "#cccccc",
-            padding: "",
+            padding: "0",
             //TODO: THEMING hover click effects (material design)
             hover: {
                 backgroundColor: "",
@@ -152,13 +152,13 @@ export const tempTheme: ThemeType = {
                 },
                 dropDownMenu: {
                     outlineColor: "#5e3f54",
-                    padding: "",
+                    padding: "0.2rem",
                     menuItem: {
                         fontSize: 1,
                         fontFamily: "sans-serif",
                         backgroundColor: "#eeeeee",
                         foregroundColor: "#5e3f54",
-                        padding: "",
+                        padding: "0.5rem 1rem 0.5rem 1rem",
                         hover: {
                             backgroundColor: "",
                             foregroundColor: "",
