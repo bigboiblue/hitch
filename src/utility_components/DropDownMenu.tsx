@@ -101,16 +101,16 @@ export default function DropDownMenu(props: Props): React.ReactElement {
                             <MenuContainer>
                                 {
                                     props.menuItemData.map((value, index) => {
-                                        const spacer = (index < props.menuItemData.length ? <Spacer /> : <></>);
+                                        const spacer = (index < props.menuItemData.length - 1 ? <Spacer /> : <></ >);
                                         return (
-                                            <>
+                                            <React.Fragment key={value.title}>
                                                 <MenuItem
                                                     menuItemData={value}
-                                                    key={value.title}
+                                                    key={uuid()}
                                                     theme={props.theme.menuItem}
                                                 />
                                                 {spacer}
-                                            </>
+                                            </React.Fragment>
                                         );
                                     })
                                 }
