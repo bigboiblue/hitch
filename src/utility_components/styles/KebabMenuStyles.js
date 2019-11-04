@@ -5,6 +5,7 @@ export const Wrapper = styled.div`
     position: absolute;
     display: flex;
     flex-direction: column;
+    cursor: pointer;
     height: ${(props) => `${props.theme.height}rem`};
     width: ${(props) => `${props.theme.height * 0.75}rem`};
     padding: ${(props) => `${props.theme.height / 8}rem`};

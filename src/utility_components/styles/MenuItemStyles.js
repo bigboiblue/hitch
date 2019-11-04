@@ -1,26 +1,36 @@
 import styled from "styled-components";
+import posed from "react-pose";
 
-export const Wrapper = styled.div`
+const WrapperCore = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    position: relative;
-    flex: 1;
-    background-color: ${(props) => props.theme.backgroundColor};
+    position: relative; 
     padding: ${(props) => props.theme.padding};
     margin: 0;
-    line-height: 0;
-    height: 100%;
+    line-height: auto;
     width: 100%;
+    height: 100%;
+    cursor: pointer;
 `;
+
+export const Wrapper = posed(WrapperCore)({
+    hoverable: true,
+    init: {
+        backgroundColor: (props) => props.theme.backgroundColor,
+    },
+    hover: {
+        backgroundColor: (props) => props.theme.hover.backgroundColor,
+    },
+
+});
 
 export const TitleContainer = styled.div`
     display: block;
     position: relative;
 
     p {
-        font-size: ${(props) => `${props.theme.fontSize}rem`};
-        font-family: ${(props) => props.theme.fontFamily};
+        font: ${(props) => props.theme.font};
         color: ${(props) => props.theme.foregroundColor};
         text-align: center;
     }

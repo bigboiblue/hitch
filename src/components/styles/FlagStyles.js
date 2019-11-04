@@ -8,8 +8,7 @@ export const Container = styled.div`
 `;
 
 export const Title = styled.li`
-    font-size: ${(props) => `${props.theme.fontSize}rem`};
-    font-family: ${(props) => props.theme.fontFamily};
+    font: ${(props) => props.theme.font};
     color: ${(props) => props.theme.foregroundColor};
     padding: 20px;
     flex: 1;

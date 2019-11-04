@@ -5,8 +5,7 @@ export const BoxTitle = styled.h1`
         text-align: center;
         color: ${(props) => props.theme.titleForegroundColor};
         padding: 20px;
-        font-size: ${(props) => `${props.theme.titleFontSize}rem`};
-        font-family: ${(props) => props.theme.titleFontFamily};
+        font: ${(props) => props.theme.titleFont};
         border-radius: 0.25rem;
         margin: 0 0 0.5rem 0;
 `;

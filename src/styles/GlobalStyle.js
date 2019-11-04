@@ -279,6 +279,7 @@ const ModernNormalise = css`
 
 const GlobalStyle = createGlobalStyle`
     ${ModernNormalise}
+    @import url('https://fonts.googleapis.com/css?family=Work+Sans:300,500&display=swap');
 `;
 
 export default GlobalStyle;

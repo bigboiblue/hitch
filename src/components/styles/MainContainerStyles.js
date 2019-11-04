@@ -17,8 +17,7 @@ export const Title = styled.h1`
     margin: 0;
     text-transform:capitalize;
     text-align: center;
-    font-size: ${(props) => `${props.theme.titleSize}rem`};
-    font-family: ${(props) => props.theme.titleFontFamily};
+    font: ${(props) => props.theme.titleFont};
     color: ${(props) => props.theme.foregroundColor};
     padding: 30px;
 `;

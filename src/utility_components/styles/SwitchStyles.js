@@ -3,6 +3,7 @@ import posed from "react-pose";
 
 export const Wrapper = styled.div`
     position: absolute;
+    cursor: pointer;
 `;
 
 const OuterSwitchStyle = styled.div`

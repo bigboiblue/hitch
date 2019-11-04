@@ -5,9 +5,7 @@ import React from "react";
 export type MenuItemTheme = {
     backgroundColor: string;
     foregroundColor: string;
-    /** Unit in rem */
-    fontSize: number;
-    fontFamily: string;
+    font: string;
     textAlign: string;
     padding: string;
     hover: {
@@ -58,9 +56,7 @@ export type ThemeType = {
         backgroundColor: string; //May be more complex (some svg or pattern)
         dynamicBackground: boolean;
         foregroundColor: string; //Essentially title color
-        /** Unit in rem */
-        titleSize: number;
-        titleFontFamily: string;
+        titleFont: string;
     };
     navbar: {
         backgroundColor: string;
@@ -74,15 +70,12 @@ export type ThemeType = {
         backgroundColor: string;
         titleBackgroundColor: string;
         titleForegroundColor: string;
-        titleFontFamily: string;
-        /** Sized in rem */
-        titleFontSize: number;
+        titleFont: string;
         flag: {
             switch: SwitchTheme;
             backgroundColor: string;
             foregroundColor: string;
-            fontSize: number;
-            fontFamily: string;
+            font: string;
             kebabMenu: KebabMenuTheme;
         };
     };
@@ -92,9 +85,7 @@ export type ThemeType = {
 //This file is essentially json. Replace this with theme data from db
 export const tempTheme: ThemeType = {
     main: {
-        /** Unit in rem */
-        titleSize: 2,
-        titleFontFamily: "sans-serif",
+        titleFont: "500 2rem 'Work Sans', sans-serif",
         backgroundColor: "#f5d7c4", //May be more complex (some svg or pattern)
         dynamicBackground: true,
         foregroundColor: "#57424e", //Essentially title color
@@ -105,15 +96,14 @@ export const tempTheme: ThemeType = {
         type: "horizontal",
         padding: "",
         menuItem: {
-            fontSize: 1,
-            fontFamily: "sans-serif",
+            font: "300 0.9rem 'Work Sans', sans-serif",
             backgroundColor: "#91667f",
-            foregroundColor: "#cccccc",
-            padding: "2rem",
+            foregroundColor: "#eeeeee",
+            padding: "1rem 2rem",
             textAlign: "center",
             //TODO: THEMING hover click effects (material design)
             hover: {
-                backgroundColor: "",
+                backgroundColor: "#a87995",
                 foregroundColor: "",
             },
             click: {
@@ -126,13 +116,11 @@ export const tempTheme: ThemeType = {
         backgroundColor: "#a37f98",
         titleBackgroundColor: "#5e3f54",
         titleForegroundColor: "#eeeeee",
-        titleFontSize: 1.5,
-        titleFontFamily: "sans-serif",
+        titleFont: "500 1.5rem 'Work Sans 300', sans-serif",
         flag: {
             backgroundColor: "rgba(255, 255, 255, 0.0)",
             foregroundColor: "#eeeeee",
-            fontSize: 1,
-            fontFamily: "sans-serif",
+            font: "300 0.9rem 'Work Sans', sans-serif",
             switch: {
                 enabledColor: "#f5ac95",
                 disabledColor: "#eeeeee",
@@ -156,15 +144,14 @@ export const tempTheme: ThemeType = {
                     outlineColor: "#5e3f54",
                     padding: "0.2rem",
                     menuItem: {
-                        fontSize: 1,
-                        fontFamily: "sans-serif",
+                        font: "300 0.9rem 'Work Sans', sans-serif",
                         backgroundColor: "#eeeeee",
                         foregroundColor: "#5e3f54",
-                        padding: "0.5rem 1rem 0.5rem 1rem",
+                        padding: "0rem 1rem 0rem 1rem",
                         //TODO: THEMING Fix textAlign
                         textAlign: "left",
                         hover: {
-                            backgroundColor: "",
+                            backgroundColor: "#ffffff",
                             foregroundColor: "",
                         },
                         click: {

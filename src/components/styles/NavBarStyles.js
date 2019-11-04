@@ -14,7 +14,6 @@ export const Container = styled.div`
 `;
 
 export const MenuItemContainer = styled.div`
-    flex-shrink: 20;
     display: flex;
     padding: ${(props) => `${props.theme.padding}rem`};
     flex-direction: ${(props) => (props.theme.type === "vertical" ? "column" : "row")};;

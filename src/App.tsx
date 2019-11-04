@@ -21,9 +21,11 @@ function App(): React.ReactElement {
 
     //TODO: SERVER replace this with db data
     const tempNavMenuItems: MenuItemData[] = [];
-    for (let i = 0; i < 5; ++i) {
-        tempNavMenuItems.push({ title: `${i}`, action: () => ({ type: "", payload: {} }) });
-    }
+    tempNavMenuItems.push({ title: "Control Panel", callback: () => console.log("Hello World") });
+    tempNavMenuItems.push({ title: "Archive", callback: () => console.log("Hello World") });
+    tempNavMenuItems.push({ title: "Event History", callback: () => console.log("Hello World") });
+    tempNavMenuItems.push({ title: "Docs", callback: () => console.log("Hello World") });
+    tempNavMenuItems.push({ title: "Login", callback: () => console.log("Hello World") });
 
     //TODO: THEMING Create awesome polygon based background that slightly manipulates color based on mouse position
 
