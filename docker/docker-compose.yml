@@ -7,7 +7,7 @@ services:
       context: ./node_server
     entrypoint: /app/docker/node_server/container_startup.sh
     volumes:
-      - ../:/app
+      - ../NodeJs-Backend:/app
       - /app/docker
       - ./node_server/container_startup.sh:/app/docker/node_server/container_startup.sh
     links:
@@ -23,12 +23,23 @@ services:
       context: ./mongodb
     entrypoint: /app/docker/mongodb/container_startup.sh
     volumes:
-      - ../:/app
-      - /app/docker
       - ./mongodb/container_startup.sh:/app/docker/mongodb/container_startup.sh
       - /Users/kyleblue/.mongodb/:/data/db/
       - /Users/kyleblue/.mongodb/log/:/var/log/
     ports:
       - "27017"
+    stdin_open: true
+    tty: true
+
+  react_frontend:
+    build:
+      context: ./react_frontend
+    entrypoint: /app/docker/react_frontend/container_startup.sh
+    volumes:
+      - ../React-Frontend:/app
+      - /app/docker
+      - ./react_frontend/container_startup.sh:/app/docker/react_frontend/container_startup.sh
+    ports:
+      - "8080:8080"
     stdin_open: true
     tty: true

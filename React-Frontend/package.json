@@ -1,5 +1,5 @@
 {
-  "name": "ts_react_demo",
+  "name": "hitch_frontend",
   "version": "1.0.0",
   "description": "",
   "main": "src/App.tsx",
@@ -8,8 +8,8 @@
     "build": "webpack",
     "test": "jest --watch --runInBand"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "bigboiblue",
+  "license": "MIT",
   "dependencies": {
     "@babel/polyfill": "^7.6.0",
     "jest": "^24.9.0",
