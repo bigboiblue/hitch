@@ -8,10 +8,21 @@ type MenuItemData = {
 }
 
 /** The object schema for a flag data object */
-interface FlagData {
+type FlagData = {
     _id: string;
     name: string;
+    groupName: string;
     isEnabled: boolean;
     type: string;
     dateCreated: number;
 }
+
+/**
+ * @property: selectionItems is only used when the input of form item is a drop selection menu...
+ *  The property: selectionItems should be an array of selection options / titles
+ */
+type FormItemData = {
+    title: string;
+    default: string | number;
+    selectionItems?: string[] | number[];
+};

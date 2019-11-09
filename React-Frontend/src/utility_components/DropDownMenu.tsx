@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import uuid from "uuid/v4";
 import { createElementWithIdAndAppend, getMidPoint } from "../utilityFunctions";
 import {
-    MenuContainerWrapper, MenuContainer, Container, InvisibleClickable, Spacer,
+    MenuContainerWrapper, MenuContainer, Container, Spacer,
 } from "./styles/DropDownMenuStyles";
 import MenuItem from "./MenuItem";
 import { DropMenuTheme } from "../styles/GlobalUserTheme";
@@ -22,6 +22,7 @@ interface Props {
     isEnabled: boolean;
     handleToggle: () => boolean;
     theme: DropMenuTheme;
+    parent: HTMLElement;
 }
 
 function isAbsoluteGlobalPosition(obj: absoluteGlobalPosition | refPosition):
@@ -29,11 +30,11 @@ function isAbsoluteGlobalPosition(obj: absoluteGlobalPosition | refPosition):
     return typeof (obj as absoluteGlobalPosition).left === "number";
 }
 
-function initDropMenu(menuContainerId: string): void {
+function initDropMenu(menuContainerId: string, parent: HTMLElement): void {
     const dropDownMenuGlobalContainer = createElementWithIdAndAppend(
         "div",
         "dropDownMenuGlobalContainer",
-        document.getElementById("portal"),
+        parent,
     );
     createElementWithIdAndAppend(
         "div",
@@ -46,7 +47,7 @@ function initDropMenu(menuContainerId: string): void {
 export default function DropDownMenu(props: Props): React.ReactElement {
     const menuContainerId = useRef(`DropDownMenu-${uuid()}`).current;
     const [position, setPosition] = useState(props.position);
-    initDropMenu(menuContainerId);
+    initDropMenu(menuContainerId, props.parent);
 
     function shouldUpdatePosition(): boolean {
         if (props.isEnabled && !isAbsoluteGlobalPosition(props.position)) {
@@ -82,15 +83,17 @@ export default function DropDownMenu(props: Props): React.ReactElement {
 
 
     const currentPose = props.isEnabled && isAbsoluteGlobalPosition(position) ? "enabled" : "disabled";
+    if (currentPose === "enabled") {
+        document.addEventListener("click", (e) => {
+            e.preventDefault();
+            props.handleToggle();
+        }, { once: true });
+    }
     return (
         <>
             {
                 ReactDOM.createPortal(
                     <Container isEnabled={props.isEnabled} pose={currentPose}>
-                        <InvisibleClickable
-                            isEnabled={props.isEnabled}
-                            onClick={props.handleToggle}
-                        />
                         <MenuContainerWrapper
                             pose={currentPose}
                             color="#0F5257"
@@ -98,7 +101,7 @@ export default function DropDownMenu(props: Props): React.ReactElement {
                             position={position}
                             theme={props.theme}
                         >
-                            <MenuContainer>
+                            <MenuContainer onClick={props.handleToggle}>
                                 {
                                     props.menuItemData.map((value, index) => {
                                         const spacer = (index < props.menuItemData.length - 1 ? <Spacer /> : <></ >);

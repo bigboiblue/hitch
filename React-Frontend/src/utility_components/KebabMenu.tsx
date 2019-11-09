@@ -11,6 +11,7 @@ interface Props {
     height?: string;
     menuItemData: MenuItemData[];
     theme: KebabMenuTheme;
+    parent?: HTMLElement;
 }
 
 
@@ -31,6 +32,7 @@ export default function NewKebabMenu(props: Props): React.ReactElement {
                 menuItemData={props.menuItemData}
                 handleToggle={toggleMenu}
                 isEnabled={isMenuEnabled}
+                parent={props.parent || document.getElementById("portal")}
                 theme={props.theme.dropDownMenu}
             />
             <Wrapper

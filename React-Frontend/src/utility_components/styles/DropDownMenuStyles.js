@@ -8,6 +8,7 @@ const ContainerCore = styled.div`
     height: 100%;
     width: 100%;
     overflow: hidden;
+    pointer-events: none;
 `;
 
 
@@ -20,15 +21,8 @@ export const Container = posed(ContainerCore)({
     },
 });
 
-export const InvisibleClickable = styled.div`
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    z-index: 9;
-    visibility: ${(props) => (props.isEnabled ? "visible" : "hidden")};
-`;
-
 const MenuContainerWrapperCore = styled.div`
+    pointer-events: auto;
     position: absolute;
     z-index: 10;
     padding: ${(props) => props.theme.padding};
