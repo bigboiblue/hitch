@@ -76,6 +76,7 @@ export default function Flag(props: Props): React.ReactElement {
                     else setFormData(formData);
                 }}
                 submitCallback={submitFormCallback}
+                submitButtonTitle={formTitle === "Rename Flag" ? "Rename" : undefined}
             />
             <Container theme={theme}>
                 <SwitchWrapper>

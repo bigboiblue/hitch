@@ -26,4 +26,5 @@ export const FlagBoxContainer = styled.div`
         display: flex;
         flex-direction: column;
         width: 40%;
+        padding-bottom: 2.5rem;
 `;

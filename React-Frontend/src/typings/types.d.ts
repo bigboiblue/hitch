@@ -26,3 +26,8 @@ type FormItemData = {
     default?: string | number;
     selectionItems?: string[] | number[];
 };
+
+type Action = {
+    type: string;
+    payload: any;
+}

@@ -41,7 +41,7 @@ export default function PopupForm(props: Props): React.ReactElement {
                             </FormItemContainer>
                             <ButtonContainer>
                                 <CancelButton onClick={formExit}>Cancel</CancelButton>
-                                <SubmitButton onClick={() => { props.submitCallback(formOutputData.current); formExit(); }}>Submit</SubmitButton>
+                                <SubmitButton onClick={() => { props.submitCallback(formOutputData.current); formExit(); }}>{props.submitButtonTitle || "Submit"}</SubmitButton>
                             </ButtonContainer>
                         </Container>
                     </Wrapper>,

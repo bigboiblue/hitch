@@ -1,9 +1,10 @@
 import { combineReducers } from "redux";
+import flagReducer from "./flagsReducer";
+import userReducer from "./userReducer";
 
-const allReducer = (state, action) => state;
-
-// combineReducers({
-//     normal: (state, action) => state,
-// });
+const allReducer = combineReducers({
+    user: userReducer,
+    flags: flagReducer,
+});
 
 export default allReducer;

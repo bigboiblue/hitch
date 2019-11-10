@@ -3,6 +3,7 @@ import { appendFileSync } from "fs";
 import { flags } from "./db_models/flag";
 const router = Router();
 
+// TODO: IMPORTANT Make server and frontent request code PRISTINE. Each and every project you make is going to rely on this sould project.
 
 /** URL Format: /flags?<groupName>=x&filter=y&limit=z */
 router.get("/", async (request, response, next) => {

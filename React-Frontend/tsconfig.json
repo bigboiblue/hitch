@@ -16,5 +16,11 @@
     ],
     "exclude": [
         "node_modules/**/*"
-    ]
+    ],
+    "typeAcquisition": {
+        "include": [
+            "./src/typings/**/*",
+            "./src/typings/types.d.ts"
+        ]
+    }
 }
