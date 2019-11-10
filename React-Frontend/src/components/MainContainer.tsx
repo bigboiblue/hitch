@@ -3,6 +3,7 @@ import axios from "axios";
 import { Container, Title, FlagBoxContainer } from "./styles/MainContainerStyles";
 import FlagBox from "./FlagBox";
 import { ThemeContext } from "../styles/GlobalUserTheme";
+import AddFlag from "./AddFlag";
 
 async function getFlagBoxes(filter: string): Promise<React.ReactElement[]> {
     const flags: FlagData[] = (await axios.get("http://localhost:8081/api/v1/flags?group=MyApp", { responseType: "json" })).data;
@@ -46,6 +47,7 @@ export default function MainContainer(props: Props): React.ReactElement {
             <Title theme={theme}>App - {props.title}</Title>
             <FlagBoxContainer>
                 {flagBoxes}
+                <AddFlag />
             </FlagBoxContainer>
         </Container>
     );

@@ -14,7 +14,7 @@ type FlagData = {
     groupName: string;
     isEnabled: boolean;
     type: string;
-    dateCreated: number;
+    dateCreated: Date;
 }
 
 /**
@@ -23,6 +23,6 @@ type FlagData = {
  */
 type FormItemData = {
     title: string;
-    default: string | number;
+    default?: string | number;
     selectionItems?: string[] | number[];
 };

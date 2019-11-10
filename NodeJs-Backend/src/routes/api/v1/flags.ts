@@ -1,4 +1,5 @@
 import { Router } from "express";
+import { appendFileSync } from "fs";
 import { flags } from "./db_models/flag";
 const router = Router();
 
@@ -28,9 +29,14 @@ router.get("/", async (request, response, next) => {
 router.put("/:id", async (request, response) => {
     await flags.updateOne({ _id: request.params.id },
         { $set: request.body });
-    response.type("application.json");
+    response.type("application/json");
     response.end("");
 });
 
+router.post("/add", async (request, response) => {
+    await flags.insertMany(request.body);
+    response.type("application/json");
+    response.end("");
+});
 
 export default router;
