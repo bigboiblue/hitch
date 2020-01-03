@@ -1,5 +1,4 @@
 import { Router } from "express";
-import { appendFileSync } from "fs";
 import { flags } from "./db_models/flag";
 const router = Router();
 
@@ -9,18 +8,19 @@ const router = Router();
 router.get("/", async (request, response, next) => {
     response.type("application/json");
 
-    let { group, limit } = request.query;
+    let { groupName, isArchived, limit } = request.query;
+    isArchived = isArchived === "true";
 
-    if (!group) {
+    if (!groupName) {
         next();
         return;
     }
 
     const distinctGroups: string[] = await flags.distinct("groupName");
-    if (!distinctGroups.includes(group)) {
-        response.send({ error: { isError: true, message: `Group: "${group}" does not exist...` } });
+    if (!distinctGroups.includes(groupName)) {
+        response.send({ error: { isError: true, message: `Group: "${groupName}" does not exist...` } });
     } else {
-        const result = await flags.find({ groupName: group }).limit(limit);
+        const result = await flags.find({ groupName, isArchived }).limit(limit);
         response.send(result);
     }
 

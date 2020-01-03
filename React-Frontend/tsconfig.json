@@ -11,16 +11,10 @@
         "moduleResolution": "node",
         "downlevelIteration": true,
     },
-    "include": [
-        "src/**/*"
-    ],
     "exclude": [
         "node_modules/**/*"
     ],
-    "typeAcquisition": {
-        "include": [
-            "./src/typings/**/*",
-            "./src/typings/types.d.ts"
-        ]
-    }
+    "include": [
+        "src/**/*"
+    ]
 }

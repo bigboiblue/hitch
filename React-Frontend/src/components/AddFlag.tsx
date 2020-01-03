@@ -9,13 +9,13 @@ export default function AddFlag(): React.ReactElement {
     function addFlagToDatabase(flagData: Partial<FlagData>): void {
         const keys = Object.keys(flagData);
         const values = Object.values(flagData);
-        const modifiedFlagData = {};
+        const modifiedFlagData: Partial<FlagData> = {};
         for (let i = 0; i < keys.length; i++) {
-            if (keys[i].toUpperCase() === "NAME") modifiedFlagData.name = values[i];
-            if (keys[i].toUpperCase() === "NEW NAME") modifiedFlagData.name = values[i];
-            if (keys[i].toUpperCase() === "GROUP") modifiedFlagData.groupName = values[i];
-            if (keys[i].toUpperCase() === "TYPE") modifiedFlagData.type = values[i];
-            if (keys[i].toUpperCase() === "ENABLED") modifiedFlagData.isEnabled = values[i];
+            if (keys[i].toUpperCase() === "NAME") modifiedFlagData.name = values[i] as string;
+            if (keys[i].toUpperCase() === "NEW NAME") modifiedFlagData.name = values[i] as string;
+            if (keys[i].toUpperCase() === "GROUP") modifiedFlagData.groupName = values[i] as string;
+            if (keys[i].toUpperCase() === "TYPE") modifiedFlagData.type = values[i] as string;
+            if (keys[i].toUpperCase() === "ENABLED") modifiedFlagData.isEnabled = values[i] as boolean;
         }
         modifiedFlagData.dateCreated = new Date();
         modifiedFlagData.isEnabled = false;

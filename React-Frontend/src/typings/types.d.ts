@@ -1,5 +1,6 @@
-type Pair<T, C> = [T, C];
+// import { Dispatch, AnyAction } from "redux";
 
+type Pair<T, C> = [T, C];
 
 /** MenuItemsData passed as {title, color?, backgroundColor?, action}[] */
 type MenuItemData = {
@@ -15,6 +16,7 @@ type FlagData = {
     isEnabled: boolean;
     type: string;
     dateCreated: Date;
+    isArchived: boolean;
 }
 
 /**
@@ -29,5 +31,7 @@ type FormItemData = {
 
 type Action = {
     type: string;
-    payload: any;
+    payload?: any;
 }
+
+// type AsyncAction = (dispatch: Dispatch<AnyAction>) => Promise<void>

@@ -1,6 +1,5 @@
 import React, { useState, useContext } from "react";
-import { findDOMNode } from "react-dom";
-import axios, { AxiosResponse } from "axios";
+import { connect } from "react-redux";
 import {
     Container, Title, SwitchWrapper, KebabMenuWrapper,
 } from "../styles/FlagStyles";
@@ -9,29 +8,25 @@ import Switch from "../../utility_components/Switch";
 import KebabMenu from "../../utility_components/KebabMenu";
 import { ThemeContext } from "../../styles/GlobalUserTheme";
 import PopupForm from "../../utility_components/PopupForm";
+import { updateFlag as updateFlagAction, toggleArchiveFlag as toggleArchiveFlagAction } from "../../actions/flagsActions";
+
 
 interface Props {
     flagData: FlagData;
+    updateFlag?: (flagData: Partial<FlagData>) => any;
+    archiveFlag?: (id: string) => any;
 }
 
+//TODO: ARCHIVE should be ordered by date archived, should show as a table with type in table (not filtered by type). To enable flag, unarchive
 
-export default function Flag(props: Props): React.ReactElement {
-    let [flagData, setFlagData] = useState(props.flagData);
-    let {
-        _id, name, type, dateCreated, groupName, isEnabled,
-    } = flagData;
-    let [isFlagEnabled, setIsFlagEnabled] = useState(props.flagData.isEnabled);
+function Flag(props: Props): React.ReactElement {
     let [formData, setFormData] = useState(undefined);
     let [formTitle, setFormTitle] = useState("");
     let theme = useContext(ThemeContext).flagBox.flag;
 
-    async function updateFlagInDatabase(dataToModify: Partial<FlagData>): Promise<void> {
-        axios.put(`http://localhost:8081/api/v1/flags/${_id}`, dataToModify, {
-            headers: {
-                "Content-Type": "application/json",
-            },
-        });
-    }
+    let {
+        _id, name, groupName, isEnabled, type, dateCreated, isArchived,
+    } = props.flagData;
 
     const menuItems: MenuItemData[] = [
         { title: "Rename", callback: () => { setFormTitle("Rename Flag"); setFormData([{ title: "New Name", default: name }]); } },
@@ -46,13 +41,13 @@ export default function Flag(props: Props): React.ReactElement {
                 ]);
             },
         },
-        { title: "Archive", callback: () => { } },
+        { title: "Archive", callback: () => { props.toggleArchiveFlag(props.flagData); } },
     ];
 
     function submitFormCallback(data: any) {
         const keys = Object.keys(data);
         const values = Object.values(data);
-        const modifiedFlagData = {};
+        const modifiedFlagData: Partial<FlagData> = { _id };
         for (let i = 0; i < keys.length; i++) {
             if (keys[i].toUpperCase() === "NAME") modifiedFlagData.name = values[i];
             if (keys[i].toUpperCase() === "NEW NAME") modifiedFlagData.name = values[i];
@@ -60,15 +55,13 @@ export default function Flag(props: Props): React.ReactElement {
             if (keys[i].toUpperCase() === "TYPE") modifiedFlagData.type = values[i];
             if (keys[i].toUpperCase() === "ENABLED") modifiedFlagData.isEnabled = values[i];
         }
-        updateFlagInDatabase(modifiedFlagData);
-        // TODO: Setflagdata has to be a redux action and flagData should be passed as props. This would allow rerendering of mainContainer and flagboxes
-        setFlagData({ flagData, ...modifiedFlagData });
+        props.updateFlag(modifiedFlagData);
     }
 
     return (
         <>
             <PopupForm
-                isVisible={Boolean(formData)}
+                isVisible={Boolean(formData)} //If formData is defined: visible
                 title={formTitle}
                 formData={formData || []}
                 handleVisibility={() => {
@@ -81,10 +74,9 @@ export default function Flag(props: Props): React.ReactElement {
             <Container theme={theme}>
                 <SwitchWrapper>
                     <Switch
-                        isEnabled={isFlagEnabled}
+                        isEnabled={props.flagData.isEnabled}
                         handleToggle={
-                            () => updateFlagInDatabase({ isEnabled: !isFlagEnabled })
-                                .then(() => setIsFlagEnabled(!isFlagEnabled))
+                            () => props.updateFlag({ _id, isEnabled: !props.flagData.isEnabled })
                         }
                         theme={theme.switch}
                     />
@@ -97,3 +89,7 @@ export default function Flag(props: Props): React.ReactElement {
         </>
     );
 }
+
+const mapActionsToProps = { updateFlag: updateFlagAction, toggleArchiveFlag: toggleArchiveFlagAction };
+
+export default connect(null, mapActionsToProps)(Flag);

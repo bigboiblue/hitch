@@ -1,22 +1,23 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, {
+    useContext, useState, useEffect, useRef,
+} from "react";
 import axios from "axios";
+import { connect } from "react-redux";
 import { Container, Title, FlagBoxContainer } from "./styles/MainContainerStyles";
 import FlagBox from "./FlagBox";
 import { ThemeContext } from "../styles/GlobalUserTheme";
 import AddFlag from "./AddFlag";
+import { getAllFlags as getAllFlagsAction, getAllFlags } from "../actions/flagsActions";
 
-async function getFlagBoxes(filter: string): Promise<React.ReactElement[]> {
-    const flags: FlagData[] = (await axios.get("http://localhost:8081/api/v1/flags?group=MyApp", { responseType: "json" })).data;
-    let uniqueFilterValues: string[];
-    if (filter.toUpperCase() === "TYPE") {
-        uniqueFilterValues = [...new Set(flags.map((value) => value.type))];
-    }
+/** @return flagBoxes filtered by type */
+function getFlagBoxes(flags: FlagData[]): React.ReactElement[] {
+    let uniqueFlagTypes = [...new Set(flags.map((value) => value.type))];
 
     let flagBoxes: React.ReactElement[] = [];
-    for (let i = 0; i < uniqueFilterValues.length; ++i) {
-        const filteredFlags = flags.filter((value) => value.type === uniqueFilterValues[i]);
+    for (let i = 0; i < uniqueFlagTypes.length; ++i) {
+        const filteredFlags = flags.filter((value) => value.type === uniqueFlagTypes[i]);
         flagBoxes.push(
-            <FlagBox key={i} filter={filter} flagsData={filteredFlags} />,
+            <FlagBox key={i} filter="filter" flagsData={filteredFlags} />,
         );
     }
     return flagBoxes;
@@ -24,20 +25,19 @@ async function getFlagBoxes(filter: string): Promise<React.ReactElement[]> {
 
 interface Props {
     title: string;
+    flags?: FlagData[];
+    getAllFlags: (group: string) => any;
 }
 
-export default function MainContainer(props: Props): React.ReactElement {
+function MainContainer(props: Props): React.ReactElement {
     let theme = useContext(ThemeContext).main;
-    let filter = "Type";
-    let [flagBoxes, setFlagBoxes] = useState([]);
+
+    //Like componentDidMount because of empty dependency list
     useEffect(() => {
-        const fetchData = async () => {
-            setFlagBoxes(await getFlagBoxes(filter));
-        };
-        if (flagBoxes.length === 0) {
-            fetchData();
-        }
-    });
+        props.getAllFlags({ groupName: "MyApp", isArchived: false });
+    }, []);
+
+    let flagBoxes = getFlagBoxes(props.flags);
 
     //TODO: BIG REDUX At some point completely redo architecture of dropdown/context menu so that it
     //renders here. MenuItems and styling would be obtained from redux store. Maybe this would
@@ -52,3 +52,9 @@ export default function MainContainer(props: Props): React.ReactElement {
         </Container>
     );
 }
+
+const mapStateToProps = (state) => ({ flags: state.flags });
+
+const mapActionsToProps = { getAllFlags: getAllFlagsAction };
+
+export default connect(mapStateToProps, mapActionsToProps)(MainContainer);

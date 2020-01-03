@@ -32,6 +32,7 @@ function App(): React.ReactElement {
     //TODO: MOBILE add media queries and make the page reponsive and mobile friendly
     let store = createStore(allReducer, storeEnhancers);
     let title = "My Application 1";
+
     return (
         <Provider store={store}>
             <GlobalStyle backgroundColor="#c8eafa" color="#000" />

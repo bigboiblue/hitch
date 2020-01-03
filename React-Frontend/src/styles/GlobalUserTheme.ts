@@ -93,7 +93,7 @@ export const tempTheme: ThemeType = {
     navbar: {
         backgroundColor: "#6C4B5E",
         size: 4.5, //in rem
-        type: "vertical",
+        type: "horizontal",
         padding: "",
         menuItem: {
             font: "300 0.9rem 'Work Sans', sans-serif",
