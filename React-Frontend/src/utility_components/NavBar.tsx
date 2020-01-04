@@ -1,6 +1,6 @@
 import React from "react";
 import MenuItem from "./MenuItem";
-import { Container, Spacer, MenuItemContainer } from "../components/styles/NavBarStyles";
+import { Container, Spacer, MenuItemContainer } from "../views/controlPanel/components/styles/NavBarStyles";
 import { ThemeType } from "../styles/GlobalUserTheme";
 
 interface Props {

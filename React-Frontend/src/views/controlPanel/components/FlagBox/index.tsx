@@ -1,11 +1,10 @@
 import React, { useContext } from "react";
 import { Container, BoxTitle, List } from "../styles/FlagBoxStyles";
 import Flag from "./Flag";
-import { ThemeContext } from "../../styles/GlobalUserTheme";
+import { ThemeContext } from "../../../../styles/GlobalUserTheme";
 
 
 interface Props {
-    filter: string;
     flagsData: FlagData[];
 }
 
@@ -18,7 +17,7 @@ export default function FlagBox(props: Props): React.ReactElement {
 
     return (
         <Container theme={theme}>
-            <BoxTitle theme={theme}>{`${props.filter}: ${props.flagsData[0].type}`}</BoxTitle>
+            <BoxTitle theme={theme}>{`${props.flagsData[0].type}`}</BoxTitle>
             <List>
                 {flags}
             </List>

@@ -19,6 +19,7 @@ export enum ActionTypes {
 
 export function getAllFlags(matchFlagFields: Partial<FlagData>): AsyncAction {
     let { groupName, isArchived } = matchFlagFields;
+
     return async (dispatch) => {
         try {
             const flags: FlagData[] = (await axios.get(`http://localhost:8081/api/v1/flags?groupName=${groupName}&isArchived=${isArchived}`, { responseType: "json" })).data;
@@ -64,7 +65,7 @@ export function toggleArchiveFlag(flagData: Partial<FlagData>): AsyncAction {
 
     return async (dispatch) => {
         try {
-            await axios.put(`http://localhost:8081/api/v1/flags/${_id}`, { isArchived: !isArchived }, { headers: { "Content-Type": "application/json" } });
+            await axios.put(`http://localhost:8081/api/v1/flags/${_id}`, { isArchived: !isArchived, isEnabled: false }, { headers: { "Content-Type": "application/json" } });
             dispatch({
                 type: ActionTypes.TOGGLE_ARCHIVE_FLAG,
                 payload: _id,

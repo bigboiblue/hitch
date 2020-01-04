@@ -1,13 +1,12 @@
 import React, {
-    useContext, useState, useEffect, useRef,
+    useContext, useEffect,
 } from "react";
-import axios from "axios";
 import { connect } from "react-redux";
 import { Container, Title, FlagBoxContainer } from "./styles/MainContainerStyles";
 import FlagBox from "./FlagBox";
-import { ThemeContext } from "../styles/GlobalUserTheme";
+import { ThemeContext } from "../../styles/GlobalUserTheme";
 import AddFlag from "./AddFlag";
-import { getAllFlags as getAllFlagsAction, getAllFlags } from "../actions/flagsActions";
+import { getAllFlags as getAllFlagsAction } from "../../actions/flagsActions";
 
 /** @return flagBoxes filtered by type */
 function getFlagBoxes(flags: FlagData[]): React.ReactElement[] {

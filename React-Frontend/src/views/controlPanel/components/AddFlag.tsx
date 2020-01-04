@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import PopupForm from "../utility_components/PopupForm";
+import PopupForm from "../../../utility_components/PopupForm";
 import { Button } from "./styles/AddFlagStyles";
 
 export default function AddFlag(): React.ReactElement {

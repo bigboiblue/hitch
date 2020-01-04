@@ -9,7 +9,8 @@ router.get("/", async (request, response, next) => {
     response.type("application/json");
 
     let { groupName, isArchived, limit } = request.query;
-    isArchived = isArchived === "true";
+
+    isArchived = (isArchived === "true");
 
     if (!groupName) {
         next();

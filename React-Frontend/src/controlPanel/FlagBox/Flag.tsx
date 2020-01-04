@@ -4,11 +4,11 @@ import {
     Container, Title, SwitchWrapper, KebabMenuWrapper,
 } from "../styles/FlagStyles";
 
-import Switch from "../../utility_components/Switch";
-import KebabMenu from "../../utility_components/KebabMenu";
-import { ThemeContext } from "../../styles/GlobalUserTheme";
-import PopupForm from "../../utility_components/PopupForm";
-import { updateFlag as updateFlagAction, toggleArchiveFlag as toggleArchiveFlagAction } from "../../actions/flagsActions";
+import Switch from "../../../utility_components/Switch";
+import KebabMenu from "../../../utility_components/KebabMenu";
+import { ThemeContext } from "../../../styles/GlobalUserTheme";
+import PopupForm from "../../../utility_components/PopupForm";
+import { updateFlag as updateFlagAction, toggleArchiveFlag as toggleArchiveFlagAction } from "../../../actions/flagsActions";
 
 
 interface Props {
