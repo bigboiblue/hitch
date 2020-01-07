@@ -35,3 +35,7 @@ type Action = {
 }
 
 // type AsyncAction = (dispatch: Dispatch<AnyAction>) => Promise<void>
+
+/** Insert simple object of ReactElements into TableRow. Key is column name, value is
+ * Element to be rendered (could simply be <p> tag) */
+type TableData = Record<string, JSX.Element>;
