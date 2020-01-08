@@ -51,12 +51,29 @@ export type SwitchTheme = {
     width: number;
 }
 
+export type ButtonTheme = {
+    backgroundColor: string;
+    foregroundColor: string;
+    padding: string;
+}
+
+export type TableTheme = {
+    titleBackgroundColor: string;
+    titleForegroundColor: string;
+    titleFont: string;
+    backgroundColor: string;
+    foregroundColor: string;
+    font: string;
+    border: string;
+}
+
 export type ThemeType = {
     main: {
         backgroundColor: string; //May be more complex (some svg or pattern)
         dynamicBackground: boolean;
         foregroundColor: string; //Essentially title color
         titleFont: string;
+        button: ButtonTheme;
     };
     navbar: {
         backgroundColor: string;
@@ -79,7 +96,9 @@ export type ThemeType = {
             kebabMenu: KebabMenuTheme;
         };
     };
+    table: TableTheme;
 }
+
 
 /* TODO: SERVER: Replace default theme value with a theme loaded from DB */
 //This file is essentially json. Replace this with theme data from db
@@ -89,6 +108,11 @@ export const tempTheme: ThemeType = {
         backgroundColor: "#f5d7c4", //May be more complex (some svg or pattern)
         dynamicBackground: true,
         foregroundColor: "#57424e", //Essentially title color
+        button: {
+            backgroundColor: "#91667f",
+            foregroundColor: "#eeeeee",
+            padding: "0.5rem",
+        },
     },
     navbar: {
         backgroundColor: "#6C4B5E",
@@ -163,6 +187,15 @@ export const tempTheme: ThemeType = {
                 },
             },
         },
+    },
+    table: {
+        titleBackgroundColor: "#5e3f54",
+        titleForegroundColor: "#ffffff",
+        titleFont: "500 1.1rem 'Work Sans', sans-serif",
+        backgroundColor: "#eeeeee",
+        foregroundColor: "#222222",
+        font: "300 1rem 'Work Sans', sans-serif",
+        border: "1px solid rgba(0, 0, 0, 0.1)",
     },
 };
 

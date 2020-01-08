@@ -1,12 +1,14 @@
 import React from "react";
 import uuid from "uuid/v4";
 import {
-    Container, StyledTable, StyledTd, StyledTr,
+    Container, StyledTable, StyledTd, StyledTr, Title,
 } from "./styles/TableStyles";
+import { TableTheme } from "../styles/GlobalUserTheme";
 
 interface Props {
     tableData: TableData[];
     width?: string;
+    theme?: TableTheme;
 }
 
 
@@ -28,7 +30,7 @@ export default function Table(props: Props): React.ReactElement {
                     if (tableData[i] === undefined) {
                         tableData[i] = [];
                     }
-                    tableData[i].push(<StyledTd key={uuid()}>{tableDataValues[indexOfHeadingInTableData]}</StyledTd>); //eslint-disable-line
+                    tableData[i].push(<StyledTd theme={props.theme} key={uuid()}>{tableDataValues[indexOfHeadingInTableData]}</StyledTd>); //eslint-disable-line
                 }
             });
         }
@@ -42,15 +44,15 @@ export default function Table(props: Props): React.ReactElement {
     return (
         <Container width={props.width}>
             {/* <TableRow tableRowData={headingRowData} headings={headings} /> */}
-            <StyledTable>
+            <StyledTable theme={props.theme}>
                 <tbody>
                     {
-                        <StyledTr>
-                            {headings ? headings.map((value) => (<StyledTd key={uuid()}><h3 key={uuid()}>{value}</h3></StyledTd>)) : <></> }
+                        <StyledTr theme={props.theme}>
+                            {headings ? headings.map((value) => (<Title theme={props.theme} key={uuid()}><h3 key={uuid()}>{value}</h3></Title>)) : <></> }
                         </StyledTr>
                     }
                     {
-                        tableData ? tableData.map((rowData) => <StyledTr key={uuid()}>{rowData}</StyledTr>) : <></>
+                        tableData ? tableData.map((rowData) => <StyledTr theme={props.theme} key={uuid()}>{rowData}</StyledTr>) : <></>
                     }
                 </tbody>
             </StyledTable>

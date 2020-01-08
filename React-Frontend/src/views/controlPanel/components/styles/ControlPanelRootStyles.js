@@ -23,8 +23,8 @@ export const Title = styled.h1`
 `;
 
 export const FlagBoxContainer = styled.div`
-        display: flex;
-        flex-direction: column;
-        width: 40%;
-        padding-bottom: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    padding-bottom: 2.5rem;
 `;

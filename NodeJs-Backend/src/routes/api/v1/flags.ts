@@ -35,6 +35,20 @@ router.put("/:id", async (request, response) => {
     response.end("");
 });
 
+router.put("/archive/:id", async (request, response) => {
+    //If going to be archived, then set date, else dont (and remove date)
+    if (request.body.isArchived) {
+        await flags.updateOne({ _id: request.params.id },
+            { $set: { ...request.body, dateArchived: new Date() } });
+    } else {
+        await flags.updateOne({ _id: request.params.id },
+            { $set: request.body, $unset: { dateArchived: "" } });
+    }
+
+    response.type("application/json");
+    response.end("");
+});
+
 router.post("/add", async (request, response) => {
     await flags.insertMany(request.body);
     response.type("application/json");

@@ -2,7 +2,7 @@ import React, {
     useContext, useEffect,
 } from "react";
 import { connect } from "react-redux";
-import { Container, Title, FlagBoxContainer } from "./styles/MainContainerStyles";
+import { Container, Title, FlagBoxContainer } from "./styles/ControlPanelRootStyles";
 import FlagBox from "./FlagBox";
 import { ThemeContext } from "../../../styles/GlobalUserTheme";
 import AddFlag from "./AddFlag";
@@ -43,7 +43,7 @@ function ControlPanelRoot(props: Props): React.ReactElement {
     //warrent rewriting all components to make better use of redux;
     return (
         <Container theme={theme}>
-            <Title theme={theme}>App - {props.currentApplication}</Title>
+            <Title theme={theme}>{props.currentApplication} - <u>Control Panel</u></Title>
             <FlagBoxContainer>
                 {flagBoxes}
                 <AddFlag />

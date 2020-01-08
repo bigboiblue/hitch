@@ -1,5 +1,5 @@
 
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import ReactDom from "react-dom";
 import { createStore, compose, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
@@ -15,7 +15,7 @@ import ArchiveRoot from "./views/archive/components/ArchiveRoot";
 import NavBar from "./utility_components/NavBar";
 import { RootContainer } from "./styles/AppStyle";
 import "@babel/polyfill";
-import { ThemeContext, tempTheme } from "./styles/GlobalUserTheme";
+import { ThemeContext, ThemeType } from "./styles/GlobalUserTheme";
 
 
 interface Props {
@@ -24,6 +24,7 @@ interface Props {
 
 function App(props: Props): React.ReactElement {
     let [route, setRoute] = useState();
+    let theme: ThemeType = useContext(ThemeContext);
 
     let storeEnhancers = compose(
         applyMiddleware(thunk),
@@ -56,9 +57,9 @@ function App(props: Props): React.ReactElement {
                 }
 
                 <GlobalStyle backgroundColor="#c8eafa" color="#000" />
-                <ThemeContext.Provider value={tempTheme}>
-                    <RootContainer id="rootContainer" theme={tempTheme}>
-                        <NavBar theme={tempTheme.navbar} menuItemData={navMenuItems} />
+                <ThemeContext.Provider value={theme}>
+                    <RootContainer id="rootContainer" theme={theme}>
+                        <NavBar theme={theme.navbar} menuItemData={navMenuItems} />
 
                         <Switch>
                             <Route exact path={["/", "/control-panel"]} render={() => <ControlPanelRoot currentApplication="MyApp" />} />

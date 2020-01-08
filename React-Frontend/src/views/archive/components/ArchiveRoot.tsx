@@ -1,8 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
 import { connect } from "react-redux";
 import { getAllFlags as getAllFlagsAction, toggleArchiveFlag as toggleArchiveFlagAction } from "../../../actions/flagsActions";
 import Table from "../../../utility_components/Table";
-import { Container, TableWrapper, Button } from "./styles/ArchiveRootStyles";
+import {
+    Container, TableWrapper, Button, Title,
+} from "./styles/ArchiveRootStyles";
+import { ThemeContext } from "../../../styles/GlobalUserTheme";
 
 interface Props {
     currentApplication: string; //uuid of the current Application (convert to title for title)
@@ -12,6 +15,8 @@ interface Props {
 }
 
 function ArchiveRoot(props: Props): React.ReactElement {
+    let theme = useContext(ThemeContext);
+
     useEffect(() => {
         props.getAllFlags({ groupName: props.currentApplication, isArchived: true });
     }, []);
@@ -23,16 +28,16 @@ function ArchiveRoot(props: Props): React.ReactElement {
             Name: <p>{value.name}</p>,
             Type: <p>{value.type}</p>,
             "Date Created": <p>{value.dateCreated.toString().slice(0, 10)}</p>,
-            Enabled: <p>{value.isEnabled.toString()}</p>,
-            Unarchive: <Button onClick={() => props.toggleArchiveFlag({ _id: value._id, isArchived: value.isArchived })}>unarchive</Button>,
+            "Date Archived": <p>{value.dateArchived.toString().slice(0, 10)}</p>,
+            Unarchive: <Button theme={theme.main.button} onClick={() => props.toggleArchiveFlag({ _id: value._id, isArchived: value.isArchived })}>unarchive</Button>,
         }));
     }
 
     return (
-        // <Title>{props.currentApplication}</Title>
-        <Container>
+        <Container theme={theme.main}>
+            <Title theme={theme.main}>{props.currentApplication} - <u>Archive</u></Title>
             <TableWrapper>
-                <Table tableData={tableRowData} />
+                <Table tableData={tableRowData} theme={theme.table} />
             </TableWrapper>
         </Container>
     );

@@ -7,6 +7,16 @@ export const Container = styled.div`
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+    background-color: ${(props) => props.theme.backgroundColor};
+`;
+
+export const Title = styled.h1`
+    margin: 0;
+    text-transform:capitalize;
+    text-align: center;
+    font: ${(props) => props.theme.titleFont};
+    color: ${(props) => props.theme.foregroundColor};
+    padding: 30px;
 `;
 
 export const TableWrapper = styled.div`
@@ -17,4 +27,12 @@ export const TableWrapper = styled.div`
     width: 40%;
 `;
 
-export const Button = styled.button``;
+export const Button = styled.button`
+    background-color: ${(props) => props.theme.backgroundColor};
+    color: ${(props) => props.theme.foregroundColor};
+    padding: ${(props) => props.theme.padding};
+    border: none;
+    border-radius: 0.25rem;
+    outline: none;
+    cursor: pointer;
+`;

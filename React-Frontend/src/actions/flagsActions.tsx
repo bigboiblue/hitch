@@ -65,7 +65,7 @@ export function toggleArchiveFlag(flagData: Partial<FlagData>): AsyncAction {
 
     return async (dispatch) => {
         try {
-            await axios.put(`http://localhost:8081/api/v1/flags/${_id}`, { isArchived: !isArchived, isEnabled: false }, { headers: { "Content-Type": "application/json" } });
+            await axios.put(`http://localhost:8081/api/v1/flags/archive/${_id}`, { isArchived: !isArchived, isEnabled: false }, { headers: { "Content-Type": "application/json" } });
             dispatch({
                 type: ActionTypes.TOGGLE_ARCHIVE_FLAG,
                 payload: _id,

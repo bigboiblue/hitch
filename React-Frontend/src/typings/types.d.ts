@@ -16,6 +16,7 @@ type FlagData = {
     isEnabled: boolean;
     type: string;
     dateCreated: Date;
+    dateArchived?: Date;
     isArchived: boolean;
 }
 
