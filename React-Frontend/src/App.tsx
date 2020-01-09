@@ -70,8 +70,8 @@ function App(props: Props): React.ReactElement {
                             <Sidebar />
 
                             <Switch>
-                                <Route exact path={["/", "/control-panel"]} render={() => <ControlPanelRoot currentApplication="MyApp" />} />
-                                <Route exact path="/archive" render={() => <ArchiveRoot currentApplication="MyApp" />} />
+                                <Route exact path={["/", "/control-panel"]} render={() => <ControlPanelRoot />} />
+                                <Route exact path="/archive" render={() => <ArchiveRoot />} />
                             </Switch>
 
                             <Sidebar />

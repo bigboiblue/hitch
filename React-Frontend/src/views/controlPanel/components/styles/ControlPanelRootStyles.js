@@ -11,6 +11,9 @@ export const Container = styled.div`
     height: 100%;
     overflow-y: scroll;
     overflow-x: hidden;
+    ::-webkit-scrollbar {
+    display: none;
+}
 `;
 
 export const Title = styled.h1`
