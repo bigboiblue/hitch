@@ -17,4 +17,7 @@ export const MainContainer = styled.div`
     position: relative;
     display: flex;
     flex-direction: row;
+    ::-webkit-scrollbar {
+        display: none;
+    }
 `;

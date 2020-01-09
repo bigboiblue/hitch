@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import { connect } from "react-redux";
 import {
-    Container, Title, SwitchWrapper, KebabMenuWrapper,
+    Container, Title, SwitchWrapper, KebabMenuWrapper, DateAdded,
 } from "../styles/FlagStyles";
 
 import Switch from "../../../../utility_components/Switch";
@@ -82,6 +82,7 @@ function Flag(props: Props): React.ReactElement {
                     />
                 </SwitchWrapper>
                 <Title key={_id} theme={theme}>{name}</Title>
+                <DateAdded key={_id} theme={theme}>Created: {dateCreated.toString().slice(0, 10)}</DateAdded>
                 <KebabMenuWrapper>
                     <KebabMenu menuItemData={menuItems} theme={theme.kebabMenu} />
                 </KebabMenuWrapper>
