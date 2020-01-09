@@ -9,5 +9,12 @@ export const RootContainer = styled.div`
     align-items: flex-start;
 `;
 
-//Currently for the sake of stopping linting errors
-export const temp = styled.div;
+export const MainContainer = styled.div`
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+`;

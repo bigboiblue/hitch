@@ -23,7 +23,7 @@ function getFlagBoxes(flags: FlagData[]): React.ReactElement[] {
 }
 
 interface Props {
-    currentApplication: string; //TODO: MONGO change this to uid of application, and hold name in DB
+    currentGroup?: string; //TODO: MONGO change this to uid of application, and hold name in DB
     flags?: FlagData[];
     getAllFlags?: (flagData: Partial<FlagData>) => any;
 }
@@ -33,8 +33,10 @@ function ControlPanelRoot(props: Props): React.ReactElement {
 
     //Like componentDidMount because of empty dependency list
     useEffect(() => {
-        props.getAllFlags({ groupName: props.currentApplication, isArchived: false });
-    }, []);
+        if (props.currentGroup.length !== 0) {
+            props.getAllFlags({ groupName: props.currentGroup, isArchived: false });
+        }
+    }, [props.currentGroup]);
 
     let flagBoxes = getFlagBoxes(props.flags);
 
@@ -43,7 +45,7 @@ function ControlPanelRoot(props: Props): React.ReactElement {
     //warrent rewriting all components to make better use of redux;
     return (
         <Container theme={theme}>
-            <Title theme={theme}>{props.currentApplication} - <u>Control Panel</u></Title>
+            <Title theme={theme}>{props.currentGroup} - <u>Control Panel</u></Title>
             <FlagBoxContainer>
                 {flagBoxes}
                 <AddFlag />
@@ -52,7 +54,10 @@ function ControlPanelRoot(props: Props): React.ReactElement {
     );
 }
 
-const mapStateToProps = (state): any => ({ flags: state.flags });
+const mapStateToProps = (state): any => {
+    console.log(state);
+    return ({ flags: state.flags, currentGroup: state.groups.currentGroup });
+};
 
 const mapActionsToProps = { getAllFlags: getAllFlagsAction };
 

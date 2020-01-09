@@ -49,10 +49,18 @@ router.put("/archive/:id", async (request, response) => {
     response.end("");
 });
 
+
+router.delete("/:id", async (request, response) => {
+    await flags.deleteOne({ _id: request.params.id });
+    response.type("application/json");
+    response.end("");
+});
+
 router.post("/add", async (request, response) => {
     await flags.insertMany(request.body);
     response.type("application/json");
     response.end("");
 });
+
 
 export default router;

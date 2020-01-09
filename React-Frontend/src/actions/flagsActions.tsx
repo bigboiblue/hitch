@@ -1,6 +1,6 @@
 import axios from "axios";
 import { Dispatch, AnyAction } from "redux";
-type AsyncAction = (dispatch: Dispatch<AnyAction>) => Promise<void>
+type AsyncAction = (dispatch: Dispatch<AnyAction>) => Promise<void>;
 
 
 export enum ActionTypes {
@@ -8,7 +8,7 @@ export enum ActionTypes {
     UPDATE_FLAG = "flags:updateFlag",
     ADD_FLAG = "flags:addFlag",
     TOGGLE_ARCHIVE_FLAG = "flags:toggleArchiveFlag",
-    REMOVE_FLAG = "flags:removeFlag",
+    DELETE_FLAG = "flags:deleteFlag",
     UPDATE_MANY_FLAGS = "flags:updateManyFlags",
     ADD_MANY_FLAGS = "flags:addManyFlags",
     ERROR = "flags:error",
@@ -53,6 +53,7 @@ export function updateFlag(flagData: Partial<FlagData>): AsyncAction {
     };
 }
 
+//TODO: Addflag action for instant update
 export function addFlag(flagData: Partial<FlagData>): AsyncAction {
     return {
         type: ActionTypes.ADD_FLAG,
@@ -79,10 +80,20 @@ export function toggleArchiveFlag(flagData: Partial<FlagData>): AsyncAction {
     };
 }
 
-export function removeFlag(id: string): AsyncAction {
-    return {
-        type: ActionTypes.REMOVE_FLAG,
-        payload: id,
+export function deleteFlag(id: string): AsyncAction {
+    return async (dispatch) => {
+        try {
+            await axios.delete(`http://localhost:8081/api/v1/flags/${id}`, { headers: { "Content-Type": "application/json" } });
+            dispatch({
+                type: ActionTypes.DELETE_FLAG,
+                payload: id,
+            });
+        } catch (e) {
+            dispatch({
+                type: ActionTypes.ERROR,
+                payload: `ERROR: Could not delete flag with id ${id}: ${e}`,
+            });
+        }
     };
 }
 

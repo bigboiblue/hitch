@@ -25,6 +25,6 @@ export const Title = styled.h1`
 export const FlagBoxContainer = styled.div`
     display: flex;
     flex-direction: column;
-    width: 40%;
+    width: 50%;
     padding-bottom: 2.5rem;
 `;

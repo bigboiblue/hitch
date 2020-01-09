@@ -13,14 +13,17 @@ import allReducer from "./reducers/index";
 import ControlPanelRoot from "./views/controlPanel/components/ControlPanelRoot";
 import ArchiveRoot from "./views/archive/components/ArchiveRoot";
 import NavBar from "./utility_components/NavBar";
-import { RootContainer } from "./styles/AppStyle";
+import { RootContainer, MainContainer } from "./styles/AppStyle";
 import "@babel/polyfill";
 import { ThemeContext, ThemeType } from "./styles/GlobalUserTheme";
+import Sidebar from "./views/general/components/Sidebar";
 
 
 interface Props {
     history?: string[];
 }
+
+let store;
 
 function App(props: Props): React.ReactElement {
     let [route, setRoute] = useState();
@@ -42,7 +45,10 @@ function App(props: Props): React.ReactElement {
     //TODO: THEMING Create awesome polygon based background that slightly manipulates color based on mouse position
 
     //TODO: MOBILE add media queries and make the page reponsive and mobile friendly
-    let store = createStore(allReducer, storeEnhancers);
+
+    if (!store) {
+        store = createStore(allReducer, storeEnhancers);
+    }
 
     return (
         <Provider store={store}>
@@ -60,11 +66,17 @@ function App(props: Props): React.ReactElement {
                 <ThemeContext.Provider value={theme}>
                     <RootContainer id="rootContainer" theme={theme}>
                         <NavBar theme={theme.navbar} menuItemData={navMenuItems} />
+                        <MainContainer theme={theme}>
+                            <Sidebar />
 
-                        <Switch>
-                            <Route exact path={["/", "/control-panel"]} render={() => <ControlPanelRoot currentApplication="MyApp" />} />
-                            <Route exact path="/archive" render={() => <ArchiveRoot currentApplication="MyApp" />} />
-                        </Switch>
+                            <Switch>
+                                <Route exact path={["/", "/control-panel"]} render={() => <ControlPanelRoot currentApplication="MyApp" />} />
+                                <Route exact path="/archive" render={() => <ArchiveRoot currentApplication="MyApp" />} />
+                            </Switch>
+
+                            <Sidebar />
+
+                        </MainContainer>
                     </RootContainer>
                 </ThemeContext.Provider>
             </Router>

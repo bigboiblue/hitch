@@ -24,7 +24,7 @@ export const TableWrapper = styled.div`
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    width: 40%;
+    width: 80%;
 `;
 
 export const Button = styled.button`
