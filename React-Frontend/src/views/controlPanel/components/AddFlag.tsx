@@ -26,7 +26,6 @@ function AddFlag(props: Props): React.ReactElement {
         modifiedFlagData.dateCreated = new Date();
         modifiedFlagData.isEnabled = false;
         modifiedFlagData.isArchived = false;
-        console.log(modifiedFlagData);
         props.addFlag(modifiedFlagData as FlagData);
     }
 
