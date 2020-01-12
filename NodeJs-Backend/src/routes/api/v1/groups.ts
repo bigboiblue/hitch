@@ -6,9 +6,9 @@ const router = Router();
 router.get("/", async (request, response, next) => {
     const distinctGroups: string[] = await flags.distinct("groupName");
 
+    response.type("application/json");
     response.send(distinctGroups);
 
-    response.type("application/json");
     response.end();
 });
 

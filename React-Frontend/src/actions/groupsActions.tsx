@@ -12,7 +12,7 @@ export enum ActionTypes {
 export function getAllGroupNames(): AsyncAction {
     return async (dispatch) => {
         try {
-            const groups: string[] = (await axios.get("http://localhost:8081/api/v1/groups", { responseType: "json" })).data;
+            const groups: string[] = (await axios.get("http://localhost:28191/api/v1/groups", { responseType: "json" })).data;
             dispatch({
                 type: ActionTypes.GET_ALL_GROUP_NAMES,
                 payload: groups,

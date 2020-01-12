@@ -10,6 +10,6 @@ services:
       - /app/docker
       - ./container_startup.sh:/app/docker/container_startup.sh
     ports:
-      - "8080:8080"
+      - "28292:28292"
     stdin_open: true
     tty: true

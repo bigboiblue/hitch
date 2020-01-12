@@ -9,8 +9,8 @@ RUN apt-get update && \
 	chsh -s /usr/bin/zsh root && \
 	wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh
 
-EXPOSE 8081
-ENV PORT=8081
+EXPOSE 28191
+ENV PORT=28191
 EXPOSE 25585
 ENV DEBUG_PORT=25585
 

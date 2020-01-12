@@ -22,7 +22,8 @@ export function getAllFlags(matchFlagFields: Partial<FlagData>): AsyncAction {
 
     return async (dispatch) => {
         try {
-            const flags: FlagData[] = (await axios.get(`http://localhost:8081/api/v1/flags?groupName=${groupName}&isArchived=${isArchived}`, { responseType: "json" })).data;
+            // TODO: Intead of localhost, replace this with customisable URL (allowing for separate servers). Use URL object.
+            const flags: FlagData[] = (await axios.get(`http://localhost:28191/api/v1/flags?groupName=${groupName}&isArchived=${isArchived}`, { responseType: "json" })).data;
             dispatch({
                 type: ActionTypes.GET_ALL_FLAGS,
                 payload: flags,
@@ -39,7 +40,7 @@ export function getAllFlags(matchFlagFields: Partial<FlagData>): AsyncAction {
 export function updateFlag(flagData: Partial<FlagData>): AsyncAction {
     return async (dispatch) => {
         try {
-            await axios.put(`http://localhost:8081/api/v1/flags/${flagData._id}`, flagData, { headers: { "Content-Type": "application/json" } });
+            await axios.put(`http://localhost:28191/api/v1/flags/${flagData._id}`, flagData, { headers: { "Content-Type": "application/json" } });
             dispatch({
                 type: ActionTypes.UPDATE_FLAG,
                 payload: flagData,
@@ -66,7 +67,7 @@ export function toggleArchiveFlag(flagData: Partial<FlagData>): AsyncAction {
 
     return async (dispatch) => {
         try {
-            await axios.put(`http://localhost:8081/api/v1/flags/archive/${_id}`, { isArchived: !isArchived, isEnabled: false }, { headers: { "Content-Type": "application/json" } });
+            await axios.put(`http://localhost:28191/api/v1/flags/archive/${_id}`, { isArchived: !isArchived, isEnabled: false }, { headers: { "Content-Type": "application/json" } });
             dispatch({
                 type: ActionTypes.TOGGLE_ARCHIVE_FLAG,
                 payload: _id,
@@ -83,7 +84,7 @@ export function toggleArchiveFlag(flagData: Partial<FlagData>): AsyncAction {
 export function deleteFlag(id: string): AsyncAction {
     return async (dispatch) => {
         try {
-            await axios.delete(`http://localhost:8081/api/v1/flags/${id}`, { headers: { "Content-Type": "application/json" } });
+            await axios.delete(`http://localhost:28191/api/v1/flags/${id}`, { headers: { "Content-Type": "application/json" } });
             dispatch({
                 type: ActionTypes.DELETE_FLAG,
                 payload: id,

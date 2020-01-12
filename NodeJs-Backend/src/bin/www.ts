@@ -3,7 +3,7 @@ import app from "../app";
 //TODO: SERVER Do 404 and error handling
 
 
-const PORT = parseInt(process.env.PORT) || 8081;
+const PORT = parseInt(process.env.PORT) || 28191;
 process.env.PORT = PORT.toString();
 
 app.listen(PORT, (): void => console.log(`Server running on port: ${PORT}`));

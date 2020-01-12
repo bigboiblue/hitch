@@ -2,6 +2,7 @@
     "eslint.enable": true,
     "eslint.workingDirectories": [
         "./NodeJs-Backend",
-        "./React-Frontend"
+        "./Node-SDK",
+        "./React-Frontend",
     ]
 }

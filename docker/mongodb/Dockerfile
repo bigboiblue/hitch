@@ -14,8 +14,8 @@ RUN apt-get update && \
 	chsh -s /usr/bin/zsh root && \
 	wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh
 
-EXPOSE 27017
-ENV DB_PORT=27017
+EXPOSE 28393
+ENV DB_PORT=28393
 
 WORKDIR /app
 

@@ -2,3 +2,4 @@
 .DS_Store
 dist
 yarn-error.log
+**/Node-SDK

@@ -19,7 +19,7 @@ export default function AddFlag(): React.ReactElement {
         }
         modifiedFlagData.dateCreated = new Date();
         modifiedFlagData.isEnabled = false;
-        axios.post("http://localhost:8081/api/v1/flags/add", modifiedFlagData, {
+        axios.post("http://localhost:28191/api/v1/flags/add", modifiedFlagData, {
             headers: {
                 "Content-Type": "application/json",
             },
