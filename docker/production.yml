@@ -1,0 +1,48 @@
+version: "3"
+# Hitch
+services:
+
+  node_server:
+    build:
+      context: ./node_server
+    entrypoint: zsh -c "yarn start && echo Backend running..."
+    volumes:
+      - ../NodeJs-Backend:/app
+      - /app/docker
+      - ./node_server/container_startup.sh:/app/docker/node_server/container_startup.sh
+    links:
+      - "mongodb"
+    ports:
+      - "28191:28191"
+      - "25585:25585"
+    stdin_open: true
+    tty: true
+    restart: always
+
+  react_frontend:
+    build:
+      context: ./react_frontend
+    entrypoint: zsh -c "yarn start && echo Frontend running..."
+    volumes:
+      - ../React-Frontend:/app
+      - /app/docker
+      - ./react_frontend/container_startup.sh:/app/docker/react_frontend/container_startup.sh
+    ports:
+      - "28292:28292"
+    stdin_open: true
+    tty: true
+    restart: always
+
+  mongodb:
+    build:
+      context: ./mongodb
+    entrypoint: /app/docker/mongodb/container_startup.sh
+    volumes:
+      - ./mongodb/container_startup.sh:/app/docker/mongodb/container_startup.sh
+      - /Users/kyleblue/.mongodb/:/data/db/
+      - /Users/kyleblue/.mongodb/log/:/var/log/
+    ports:
+      - "28393"
+    stdin_open: true
+    tty: true
+    restart: always
