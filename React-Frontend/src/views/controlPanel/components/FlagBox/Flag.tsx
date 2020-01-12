@@ -82,8 +82,8 @@ function Flag(props: Props): React.ReactElement {
                         theme={theme.switch}
                     />
                 </SwitchWrapper>
-                <Title key={_id} theme={theme}>{name}</Title>
-                <DateAdded key={_id} theme={theme}>Created: {dateCreated.toString().slice(0, 10)}</DateAdded>
+                <Title key={`Title: ${_id}`} theme={theme}>{name}</Title>
+                <DateAdded key={`Date: ${_id}`} theme={theme}>Created: {dateCreated.toString().slice(0, 10)}</DateAdded>
                 <KebabMenuWrapper>
                     <KebabMenu menuItemData={menuItems} theme={theme.kebabMenu} />
                 </KebabMenuWrapper>

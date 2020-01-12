@@ -26,7 +26,9 @@ function ArchiveRoot(props: Props): React.ReactElement {
 
 
     let tableRowData;
-    if (props.flags.length !== 0 && props.flags[0].dateArchived) {
+    // @ts-ignore
+    if (!props.flags.error && props.flags.length !== 0 && props.flags[0].dateArchived) {
+        console.log("dwoiauhdwaiuh");
         tableRowData = props.flags.map((value) => ({
             Name: <p>{value.name}</p>,
             Type: <p>{value.type}</p>,

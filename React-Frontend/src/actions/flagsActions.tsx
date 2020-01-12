@@ -55,10 +55,20 @@ export function updateFlag(flagData: Partial<FlagData>): AsyncAction {
 }
 
 //TODO: Addflag action for instant update
-export function addFlag(flagData: Partial<FlagData>): any {
-    return {
-        type: ActionTypes.ADD_FLAG,
-        payload: flagData,
+export function addFlag(flagData: FlagData): AsyncAction {
+    return async (dispatch) => {
+        try {
+            await axios.post("http://localhost:28191/api/v1/flags/add", flagData, { headers: { "Content-Type": "application/json" } });
+            dispatch({
+                type: ActionTypes.ADD_FLAG,
+                payload: flagData,
+            });
+        } catch (e) {
+            dispatch({
+                type: ActionTypes.ERROR,
+                payload: `ERROR: Could not add new flag with id ${flagData._id}: ${e}`,
+            });
+        }
     };
 }
 

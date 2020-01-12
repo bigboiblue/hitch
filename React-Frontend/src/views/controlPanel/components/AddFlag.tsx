@@ -1,9 +1,15 @@
 import React, { useState } from "react";
-import axios from "axios";
+import { connect } from "react-redux";
 import PopupForm from "../../../utility_components/PopupForm";
 import { Button } from "./styles/AddFlagStyles";
+import { addFlag as addFlagAction } from "../../../actions/flagsActions";
 
-export default function AddFlag(): React.ReactElement {
+
+interface Props {
+    addFlag?: (flagData: FlagData) => any;
+}
+
+function AddFlag(props: Props): React.ReactElement {
     let [isFormVisible, setIsFormVisible] = useState(false);
 
     function addFlagToDatabase(flagData: Partial<FlagData>): void {
@@ -19,11 +25,9 @@ export default function AddFlag(): React.ReactElement {
         }
         modifiedFlagData.dateCreated = new Date();
         modifiedFlagData.isEnabled = false;
-        axios.post("http://localhost:28191/api/v1/flags/add", modifiedFlagData, {
-            headers: {
-                "Content-Type": "application/json",
-            },
-        });
+        modifiedFlagData.isArchived = false;
+        console.log(modifiedFlagData);
+        props.addFlag(modifiedFlagData as FlagData);
     }
 
     const formTitle = "Add New Flag";
@@ -47,3 +51,9 @@ export default function AddFlag(): React.ReactElement {
         </>
     );
 }
+
+const mapActionsToProps = {
+    addFlag: addFlagAction,
+};
+
+export default connect(null, mapActionsToProps)(AddFlag);

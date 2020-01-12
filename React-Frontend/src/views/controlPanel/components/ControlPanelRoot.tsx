@@ -38,7 +38,11 @@ function ControlPanelRoot(props: Props): React.ReactElement {
         }
     }, [props.currentGroup]);
 
-    let flagBoxes = getFlagBoxes(props.flags);
+    let flagBoxes = [];
+    // @ts-ignore
+    if (props.flags.error === undefined) {
+        flagBoxes = getFlagBoxes(props.flags);
+    }
 
     //TODO: BIG REDUX At some point completely redo architecture of dropdown/context menu so that it
     //renders here. MenuItems and styling would be obtained from redux store. Maybe this would
@@ -54,10 +58,7 @@ function ControlPanelRoot(props: Props): React.ReactElement {
     );
 }
 
-const mapStateToProps = (state): any => {
-    console.log(state);
-    return ({ flags: state.flags, currentGroup: state.groups.currentGroup });
-};
+const mapStateToProps = (state): any => ({ flags: state.flags, currentGroup: state.groups.currentGroup });
 
 const mapActionsToProps = { getAllFlags: getAllFlagsAction };
 

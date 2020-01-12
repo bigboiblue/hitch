@@ -12,9 +12,12 @@ function flagsReducer(state: FlagData[] = [], { type, payload }): Record<string,
     case ActionTypes.TOGGLE_ARCHIVE_FLAG:
         return state.filter((value) => value._id !== payload);
         break;
-    //TODO: Upon delete flag, if last flag in a group, remove the group
+    //TODO: If last flag on page, change to another feature group (Or stop error when selecting unknown group)
     case ActionTypes.DELETE_FLAG:
         return state.filter((value) => value._id !== payload);
+        break;
+    case ActionTypes.ADD_FLAG:
+        return payload.groupName === state[0].groupName ? [...state, payload] : [...state];
         break;
     default:
         return state;

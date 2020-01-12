@@ -9,6 +9,7 @@ interface Props {
     currentGroup?: string;
     getAllGroupNames?: () => any;
     setCurrentGroup?: (groupName: string) => any;
+    flags?: FlagData[];
 }
 
 function Sidebar(props: Props): React.ReactElement {
@@ -18,7 +19,7 @@ function Sidebar(props: Props): React.ReactElement {
 
     useEffect(() => {
         props.getAllGroupNames();
-    }, []);
+    }, [props.flags]);
 
 
     return (
@@ -30,7 +31,7 @@ function Sidebar(props: Props): React.ReactElement {
 
 
 const mapStateToProps = (state) => (
-    { allGroups: state.groups.allGroups, currentGroup: state.groups.currentGroup });
+    { allGroups: state.groups.allGroups, currentGroup: state.groups.currentGroup, flags: state.flags });
 const mapDispatchToProps = {
     getAllGroupNames: getAllGroupNamesAction,
     setCurrentGroup: setCurrentGroupAction,
