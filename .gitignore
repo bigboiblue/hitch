@@ -1,6 +1,5 @@
 **/node_modules
 .DS_Store
 React-Frontend/dist
-NodeJs-Backend/dist
 yarn-error.log
 **/Node-SDK
