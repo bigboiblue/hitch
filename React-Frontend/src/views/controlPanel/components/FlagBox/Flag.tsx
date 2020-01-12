@@ -44,16 +44,17 @@ function Flag(props: Props): React.ReactElement {
         { title: "Archive", callback: () => { props.toggleArchiveFlag(props.flagData); } },
     ];
 
-    function submitFormCallback(data: any) {
+    function submitFormCallback(data: any): void {
         const keys = Object.keys(data);
         const values = Object.values(data);
         const modifiedFlagData: Partial<FlagData> = { _id };
+
         for (let i = 0; i < keys.length; i++) {
-            if (keys[i].toUpperCase() === "NAME") modifiedFlagData.name = values[i];
-            if (keys[i].toUpperCase() === "NEW NAME") modifiedFlagData.name = values[i];
-            if (keys[i].toUpperCase() === "GROUP") modifiedFlagData.groupName = values[i];
-            if (keys[i].toUpperCase() === "TYPE") modifiedFlagData.type = values[i];
-            if (keys[i].toUpperCase() === "ENABLED") modifiedFlagData.isEnabled = values[i];
+            if (keys[i].toUpperCase() === "NAME") modifiedFlagData.name = values[i] as string;
+            if (keys[i].toUpperCase() === "NEW NAME") modifiedFlagData.name = values[i] as string;
+            if (keys[i].toUpperCase() === "GROUP") modifiedFlagData.groupName = values[i] as string;
+            if (keys[i].toUpperCase() === "TYPE") modifiedFlagData.type = values[i] as string;
+            if (keys[i].toUpperCase() === "ENABLED") modifiedFlagData.isEnabled = values[i] as boolean;
         }
         props.updateFlag(modifiedFlagData);
     }

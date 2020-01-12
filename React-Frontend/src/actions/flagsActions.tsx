@@ -14,7 +14,6 @@ export enum ActionTypes {
     ERROR = "flags:error",
 }
 
-// TODO: REDUX make all thunk
 //TODO: REDUX make error action and stack
 
 export function getAllFlags(matchFlagFields: Partial<FlagData>): AsyncAction {
@@ -23,7 +22,8 @@ export function getAllFlags(matchFlagFields: Partial<FlagData>): AsyncAction {
     return async (dispatch) => {
         try {
             // TODO: Intead of localhost, replace this with customisable URL (allowing for separate servers). Use URL object.
-            const flags: FlagData[] = (await axios.get(`http://localhost:28191/api/v1/flags?groupName=${groupName}&isArchived=${isArchived}`, { responseType: "json" })).data;
+            const flags: FlagData[] = (await axios.get(`http://localhost:28191/api/v1/flags?groupName=${groupName}&isArchived=${isArchived}`,
+                { responseType: "json" })).data;
             dispatch({
                 type: ActionTypes.GET_ALL_FLAGS,
                 payload: flags,
@@ -55,7 +55,7 @@ export function updateFlag(flagData: Partial<FlagData>): AsyncAction {
 }
 
 //TODO: Addflag action for instant update
-export function addFlag(flagData: Partial<FlagData>): AsyncAction {
+export function addFlag(flagData: Partial<FlagData>): any {
     return {
         type: ActionTypes.ADD_FLAG,
         payload: flagData,
@@ -67,7 +67,8 @@ export function toggleArchiveFlag(flagData: Partial<FlagData>): AsyncAction {
 
     return async (dispatch) => {
         try {
-            await axios.put(`http://localhost:28191/api/v1/flags/archive/${_id}`, { isArchived: !isArchived, isEnabled: false }, { headers: { "Content-Type": "application/json" } });
+            await axios.put(`http://localhost:28191/api/v1/flags/archive/${_id}`,
+                { isArchived: !isArchived, isEnabled: false }, { headers: { "Content-Type": "application/json" } });
             dispatch({
                 type: ActionTypes.TOGGLE_ARCHIVE_FLAG,
                 payload: _id,
@@ -98,14 +99,14 @@ export function deleteFlag(id: string): AsyncAction {
     };
 }
 
-export function updateManyFlags(allFlagData: Partial<FlagData>[]): AsyncAction {
+export function updateManyFlags(allFlagData: Partial<FlagData>[]): any {
     return {
         type: ActionTypes.UPDATE_MANY_FLAGS,
         payload: allFlagData,
     };
 }
 
-export function addManyFlags(allFlagData: Partial<FlagData>[]): AsyncAction {
+export function addManyFlags(allFlagData: Partial<FlagData>[]): any {
     return {
         type: ActionTypes.ADD_MANY_FLAGS,
         payload: allFlagData,

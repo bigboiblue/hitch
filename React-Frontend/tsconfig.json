@@ -9,8 +9,8 @@
         "jsx": "react",
         "esModuleInterop": true,
         "moduleResolution": "node",
-        "downlevelIteration": true,
-        "types": ["./src/typings/types.d.ts"]
+        "downlevelIteration": true
+        // "types": ["./src/typings/types.d.ts"]
     },
     "exclude": [
         "node_modules/**/*"

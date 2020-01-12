@@ -49,6 +49,7 @@
             }
         ],
         "no-undef": "off",
+        "max-len": [1, 150],
         "no-unused-expressions": "warn",
         "class-methods-use-this": "warn",
         "no-plusplus": "off",
